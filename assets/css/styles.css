@@ -39,10 +39,14 @@ h2 {
 }
 
 #homepage-startgame, #homepage-settings {
-    background-color: #D1BB89;
+    background-color: #721200;
     border-radius: 10%;
     padding: 15px;
     margin: 2.5vw;
     width: 150px;
+    cursor: pointer;
+}
 
+#homepage-startgame a, #homepage-settings a {
+    color: #ffffff;
 }
