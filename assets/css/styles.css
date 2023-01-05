@@ -31,22 +31,63 @@ h2 {
     color: #721200;
 }
 
-#homepage-buttons {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    padding: 20px;
+.homepage-buttons:hover {
+    background-color: #fff;
+    color: #721200;
+    font-weight: bold;
 }
 
-#homepage-startgame, #homepage-settings {
+.homepage-buttons {
     background-color: #721200;
     border-radius: 10%;
-    padding: 15px;
-    margin: 2.5vw;
+    margin: 40px auto;
     width: 150px;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+#homepage-rules {
+    margin-bottom: 100px;
+}
+
+#homepage-rules li, #tutorial {
+    font-family: 'lustria',sans-serif;
+    font-weight: bold;
+    padding: 8px;
+    color: black;
+}
+
+#tutorial:hover {
+    color: #721200;
+    text-decoration: underline;
+}
+
+#audio {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #721200;
+    color: #fff;
+    border-radius: 10%;
+    padding: 5px 15px;
     cursor: pointer;
 }
 
-#homepage-startgame a, #homepage-settings a {
-    color: #ffffff;
+#audio:checked {
+
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: black;
+    width: 100%;
+    color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

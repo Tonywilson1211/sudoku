@@ -20,13 +20,10 @@
 <body>
     <h1>Sudoku</h1>
     <hr>
-    <div id="homepage-buttons">
-        <div id="homepage-startgame">
-            <a href="game.html" aria-label="Click to navigate to game page to start a new game">Start Game</a>
-        </div>
-        <div id="homepage-settings">
-            <a href="settings.html" aria-label="Click to navigate to settings page to change game options">Settings</a>
-        </div>
+    <h2>Welcome!</h2>
+    <div>
+        <a class="homepage-buttons" href="game.html"  aria-label="Click to navigate to game page to start a new game">Start Game</a>
+        <a class="homepage-buttons" href="settings.html" aria-label="Click to navigate to settings page to change game options">Settings</a>
     </div>
   
     <div id="homepage-rules">
@@ -39,21 +36,16 @@
             <li>Each horizontal row can only contain numbers from 1 to 9.</li>
             <li>Each number in the 3×3 block, vertical column or horizontal row can be used only once.</li>
             <li>The game is over when the whole Sudoku grid is correctly filled with numbers.</li>
+            <li><a href="https://sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/" target="_blank" id="tutorial" aria-label="open a new window to a website explaining how to play the game">For more information on how to play Sudoku, click here.</a></li>
         </ol>
     </div>
-    <div id="audio">
-        <label><input type="button" value="Music" aria-label="toggle on/off to listen to music whilst you play"></input></label>
+    <div>
+        <button id="audio" aria-label="toggle on/off to listen to music whilst you play">Music  <i class="fa-solid fa-volume-high"></i></button>
+        
+
     </div>
 </body>
 <footer>
-    <div id="left-footer">
-        <a href="#"><label><input type="button" value="Leave a Life!" aria-label="click to leave a like"></input></label></a>
-    </div>
-    <div id="middle-footer">
-        <p>Made By Anthony Wilson</p>
-    </div>
-    <div id="right-footer">
-        <a href="#" target="_blank"><label><input type="button" value="Follow me on Github" aria-label="click to open a new page to owner's github profile"></input></label></a>
-    </div>
+    <p>Made By Anthony Wilson</p>
 </footer>
 </html>
