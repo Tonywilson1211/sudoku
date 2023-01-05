@@ -1,73 +1,48 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400;1,500&family=Lustria&family=Permanent+Marker&display=swap');
+
+/* three font styles in use: lora, lustria, permanent marker */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'lora', sans-serif;
+    font-weight: 400;
     text-align: center;
+    font-size: 16px;
+    text-decoration: none;
 }
 
-hr {
-    width: 500px;
+body {
+    background: url('../images/site/background.jpg');
+    background-size: cover;
+    
 }
 
-#errors {
-    color: coral;
+h1 {
+    font-family: 'permanent marker', sans-serif;
+    font-size: 5rem;
+    color: #721200;
 }
 
-#board {
-    width: 450px;
-    height: 450px;
+h2 {
+    font-family: 'permanent marker', sans-serif;
+    font-size: 2.5rem;
+    margin-top: 25px;
+    color: #721200;
+}
 
-    margin: 0 auto;
+#homepage-buttons {
     display: flex;
-    flex-wrap: wrap;
-}
-
-.tile {
-    width: 48px; 
-    height: 48px;
-    border: 1px solid lightgray;
-
-    /* Text */
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
+    text-align: center;
     justify-content: center;
-    align-items: center;
+    padding: 20px;
 }
 
-#digits {
-    width: 450px;
-    height: 50px;
+#homepage-startgame, #homepage-settings {
+    background-color: #D1BB89;
+    border-radius: 10%;
+    padding: 15px;
+    margin: 2.5vw;
+    width: 150px;
 
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.number {
-    width: 44px; 
-    height: 44px;
-    border: 1px solid black;
-    margin: 2px;
-
-    /* Text */
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.number-selected {
-    background-color: gray;
-}
-
-.tile-start {
-    background-color: whitesmoke;
-}
-
-.horizontal-line {
-    border-bottom: 1px solid black;
-}
-
-.vertical-line {
-    border-right: 1px solid black;
 }
