@@ -91,3 +91,44 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
+/* Game Page Setup */
+
+#board {
+    height: 480px;
+    width: 480px;
+    border: solid white 4px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.gamepage-buttons {
+    padding: 5px 30px;
+    margin: 10px 20px;
+}
+
+#container-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container-left {
+    position: fixed;
+    top: 150px;
+    left: 100px;
+    margin: 60px 0;
+
+}
+
+#container-bottom {
+    display: inline-flex;
+}
+
+#container-right {
+    position: absolute;
+    top: 20%;
+    right: 29%;
+    margin: 60px 0;
+}
+

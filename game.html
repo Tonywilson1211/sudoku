@@ -20,13 +20,74 @@
 <body>
     <h1>Sudoku</h1>
     <hr>
-    <h2 id="errors">0</h2>
-    <!-- 9x9 board -->
-    <div id="board"></div>
-    <br>
-    <div id="digits">
+    <div>
+        <button id="audio" aria-label="toggle on/off to listen to music whilst you play">Music  <i class="fa-solid fa-volume-high"></i></button>
+    </div>
+    <div>
+        <button id="how-to-play" class="gamepage-buttons" aria-label="opens new webpage with instructions on how to play the game">How To Play</button>
+    </div>
+    <div id="game-container">
+        <div id="container-top">
+            <div>
+                <button id="diff" class="gamepage-buttons" aria-label="toggle difficulty between easy, medium and hard">Diff: Easy</button>
+            </div>
+            <div>
+                <label id="errors" class="gamepage-buttons" aria-label="If enabled in settings, the number of errors will be recorded as you progress through the game">Errors: 0</label>
+            </div>
+            <div>
+                <label id="timer" class="gamepage-buttons" aria-label="depending on the settings chosen, this timer will either count the time taken, or the time remaining.">Timer: 0:00</label>
+            </div>
+            <div>
+                <button id="pause" class="gamepage-buttons" aria-label="toggle pause on or off">Pause</button>
+            </div>
+            <div>
+                <button id="notes" class="gamepage-buttons" aria-label="toggle note making mode">Notes</button>
+            </div>
+        </div>
+        <div id="board">
+            <div id="row1">
+                <div id="box1" class="box"></div>
+                <div id="box2" class="box"></div>
+                <div id="box3" class="box"></div>
+            </div>
+            <div id="row2">
+                <div id="box4" class="box"></div>
+                <div id="box5" class="box"></div>
+                <div id="box6" class="box"></div>
+            </div>
+            <div id="row3">
+                <div id="box7" class="box"></div>
+                <div id="box8" class="box"></div>
+                <div id="box9" class="box"></div>
+            </div>
+        </div>
+        <div id="container-left">
+            <div>
+                <button id="undo" class="gamepage-buttons" aria-label="undo previous action">Undo</button>
+            </div>
+            <div>
+                <button id="redo" class="gamepage-buttons" aria-label="redo any undo actions">Redo</button>
+            </div>
+            <div>
+                <button id="settings" class="gamepage-buttons" aria-label="opens new webpage where you can select different game settings">Settings</button>
+            </div>
+        </div>
+        <div id="container-bottom">
+            <div>
+                <button id="new-game" class="gamepage-buttons" aria-label="starts a new game">New Game</button>
+            </div>
+            <div>
+                <button id="auto-solve" class="gamepage-buttons" aria-label="auto solve the game">Auto Solve</button>
+            </div>
+            <div>
+                <button id="restart-game" class="gamepage-buttons" aria-label="restart the game">Restart Game</button>
+            </div>
+        </div>
+        <div id="container-right">
+            <div>
+                <button id="digits" class="gamepage-buttons" aria-label="numbers 1 to 9">#</button>
+            </div>
+        </div>
     </div>
 </body>
-
-
 </html>
