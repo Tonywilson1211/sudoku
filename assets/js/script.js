@@ -1,14 +1,3 @@
-count=0
-for (var i=0;i<9;i++){
-    count=9*i;
-    document.getElementsByClassName("box")[i].innerHTML="<div class='cell'><input type='text' id='"+(count+1)+"' class='input'></div><div class='cell'><input type='text' id='"+(count+2)+"' class='input'></div><div class='cell'><input type='text' id='"+(count+3)+"' class='input'></div><div class='cell'><input type='text' id='"+(count+4)+"' class='input'></div><div class='cell'><input type='text' id='"+(count+5)+"' class='input'></div><div class='cell'><input type='text' id='"+(count+6)+"' class='input'></div><div class='cell'><input type='text' id='"+(count+7)+"' class='input'></div><div class='cell'><input type='text' id='"+(count+8)+"' class='input'></div><div class='cell'><input type='text' id='"+(count+9)+"' class='input'></div>"
-}
-
-
-var level;
-var choosen;
-
-
 // easy_level board create
 
 easy_board=['2-5---7--45---9----2-6-81----9---8567-------2418---2----43-7-1----1---85--6---7-8','----35-86-1-9-7-----269----54------------527-9--75----7-6---3-----2-----56---2-14','3-549-6----396--81-5-2--1494-276-1-39---583-46-1549--7-6-1-824558-7-3-924---7-3-6','47----3-------179--4-93--5----6---7-48---------2716-34-9----6----6--2381---54--1-','-2--18573-31--5-96---16----5--4-26--97--86--------98--1-6--79--2-5---8144-9-7---1','"6------7------5-2------1---362----81--96-----71--9-4-5-2---651---78----345-------'];
@@ -28,40 +17,4 @@ hard_board=['---789-----75-8-4---38-----8---1---6---7-9---2---7---1-----61---5-3
 
 hard=['165789432297518346973821654847312596463729158284675931923546178851364297615439782','861794532617948325156283479492536871928365147784619253753812496345127968239574681','187256349428715963534691872924738156619483572861247395356194287573962418729835641','143657892526738419984361275956238174843591627315782469872149635791426583267954318','783461592318627954179246835569732184625493817246358971142958673497581326835719264','712583694639714258845269173521436987367928415498175326184697532253841769976352841'];
 
-window.onload = function() {
-    setGame();
-}
-
-function setGame() {
-    // Digits 1-9
-    for (let i = 1; i <= 9; i++) {
-        //<div id="1" class="number">1</div>
-        let number = document.createElement("div");
-        number.id = i
-        number.innerText = i;
-        number.addEventListener("click", selectNumber);
-        number.classList.add("number");
-        document.getElementById("digits").appendChild(number);
-    }
-
-    // Board 9x9
-    for (let r = 0; r < 9; r++) {
-        for (let c = 0; c < 9; c++) {
-            let tile = document.createElement("div");
-            tile.id = r.toString() + "-" + c.toString();
-            if (board[r][c] != "-") {
-                tile.innerText = board[r][c];
-                tile.classList.add("tile-start");
-            }
-            if (r == 2 || r == 5) {
-                tile.classList.add("horizontal-line");
-            }
-            if (c == 2 || c == 5) {
-                tile.classList.add("vertical-line");
-            }
-            tile.addEventListener("click", selectTile);
-            tile.classList.add("tile");
-            document.getElementById("board").append(tile);
-        }
-    }
-}
+function newGame()
