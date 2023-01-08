@@ -74,10 +74,13 @@ h2 {
     border-radius: 10%;
     padding: 5px 15px;
     cursor: pointer;
+    box-shadow: 2px 1px 2px gray;
+    margin: 4px 10px 4px 10px;
 }
 
-#audio:checked {
-
+#audio:active {
+    box-shadow: 0 0 0 white;
+    margin: 6px 10px 2px 10px;
 }
 
 footer {
@@ -94,41 +97,125 @@ footer {
 
 /* Game Page Setup */
 
+#how-to-play-container {
+    height: 150px;
+
+}
+
+.how-to-play {
+    margin-bottom: 100px;
+    padding: 8px 20px;
+    background-color: #721200;
+    color: #fff;
+    font-family: 'lustria', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 200px;
+    box-shadow: 2px 1px 2px gray;
+    margin: 4px 10px 4px 10px;
+    border: 2px solid black;
+    letter-spacing: 1.5px;
+    display: inline-block;
+}
+
 #board {
-    height: 480px;
-    width: 480px;
-    border: solid white 4px;
+    min-height: 480px;
+    max-height: 480px;
+    min-width: 480px;
+    max-width: 480px;
+    border: solid #721200 4px;
     display: flex;
-    margin: 0 auto;
+    background-color: #fff;
+
+}
+
+#game-container {
+    display: flex;
+    justify-content: center;
 }
 
 .gamepage-buttons {
-    padding: 5px 30px;
-    margin: 10px 20px;
+    padding: 8px 10px;
+    background-color: #721200;
+    color: #fff;
+    font-family: 'lustria', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 150px;
+    box-shadow: 2px 1px 2px gray;
+    margin: 4px 10px 4px 10px;
+    letter-spacing: 1.5px;
+}
+
+.gamepage-buttons:active {
+    box-shadow: 0 0 0 white;
+    margin: 6px 10px 2px 10px;
+
 }
 
 #container-top {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#container-left {
-    position: fixed;
-    top: 150px;
-    left: 100px;
-    margin: 60px 0;
-
+    position: absolute;
+    margin: -60px;
 }
 
 #container-bottom {
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 500px;
+}
+
+#container-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    max-height: 480px;
+    margin-right: 35px;
 }
 
 #container-right {
-    position: absolute;
-    top: 20%;
-    right: 29%;
-    margin: 60px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 480px;
+    margin-left: 35px;
 }
+
+#digits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.box {
+    height: 157.5px;
+    width: 157.5px;
+    border: solid white 2px;
+    background-color: #d8cdb7;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.cell {
+    height: 50px;
+    width: 50px;
+    border: dotted white 1px;
+    text-align: center;
+    background-color: #d8cdb7;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+    
+
+
+
+
+
 
