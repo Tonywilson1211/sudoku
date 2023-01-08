@@ -45,9 +45,6 @@
         </div>
         <div id="container-bottom">
             <div>
-                <button id="errors" class="gamepage-buttons" aria-label="If enabled in settings, the number of errors will be recorded as you progress through the game">0</button>
-            </div>
-            <div>
                 <button id="timer" class="gamepage-buttons" aria-label="depending on the settings chosen, this timer will either count the time taken, or the time remaining.">0:00</button>
             </div>
             <div>
@@ -68,7 +65,9 @@
         <div id="board">
             <div id="row1">
                 <div id="box1" class="box">
-                    <div class="tile"></div>
+                    <div>
+                        <label><input datatype="tile-1" type="text" class="tile"></label>
+                    </div>
                     <div class="tile"></div>
                     <div class="tile"></div>
                     <div class="tile"></div>
@@ -174,16 +173,16 @@
         </div>
         <div id="container-right">
             <div id="digits">
-                <button id="notes" class="gamepage-buttons" aria-label="toggle note making mode"><i class="fa-solid fa-pencil"></i> Notes</button>
-                <button class="gamepage-buttons" aria-label="one">1</button>
-                <button class="gamepage-buttons" aria-label="two">2</button>
-                <button class="gamepage-buttons" aria-label="three">3</button>
-                <button class="gamepage-buttons" aria-label="four">4</button>
-                <button class="gamepage-buttons" aria-label="five">5</button>
-                <button class="gamepage-buttons" aria-label="six">6</button>
-                <button class="gamepage-buttons" aria-label="seven">7</button>
-                <button class="gamepage-buttons" aria-label="eight">8</button>
-                <button class="gamepage-buttons" aria-label="nine">9</button>
+                <button id="notes" class="digit-btn" aria-label="toggle note making mode"><i class="fa-solid fa-pencil"></i></button>
+                <button class="digit-btn"  aria-label="one">1</button>
+                <button class="digit-btn" aria-label="two">2</button>
+                <button class="digit-btn" aria-label="three">3</button>
+                <button class="digit-btn" aria-label="four">4</button>
+                <button class="digit-btn" aria-label="five">5</button>
+                <button class="digit-btn" aria-label="six">6</button>
+                <button class="digit-btn" aria-label="seven">7</button>
+                <button class="digit-btn" aria-label="eight">8</button>
+                <button class="digit-btn" aria-label="nine">9</button>
             </div>
         </div>
     </div>

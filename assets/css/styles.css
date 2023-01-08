@@ -142,13 +142,12 @@ footer {
     justify-content: center;
 }
 
-.gamepage-buttons {
+.gamepage-buttons, .digit-btn {
     padding: 8px 10px;
     background-color: #721200;
     color: #fff;
     font-family: 'lustria', sans-serif;
     font-weight: bold;
-    font-size: 1rem;
     cursor: pointer;
     width: 150px;
     box-shadow: 2px 1px 2px gray;
@@ -218,10 +217,57 @@ footer {
     font-size: x-large;
     font-weight: bold;
 }
+
+@media screen and (max-width:900px) {
+
+    .gamepage-buttons {
+        padding: 5px 5px;
+        font-size: 0.8rem;
+        width: 65px;
+        height: 45px;
+    }
     
+    .gamepage-buttons:hover {
+        background-color: #fff;
+        color: #721200;
+    }
 
+    #container-left {
+        margin-right: 5px;
+    }
+    
+    #container-right {
+        margin-left: 5px;
+    }
 
+    #board {
+        min-height: 280px;
+        max-height: 280px;
+        min-width: 280px;
+        max-width: 280px;
+        border: solid #721200 4px;
+        display: flex;
+        background-color: #fff;
+    }
 
+    .tile {
+        height: 30.5px;
+        width: 30.5px;
+    }
 
+    .box {
+        height: 90px;
+        width: 90px;
+    }
 
-
+    .digit-btn {
+        height: 23px;
+        margin: 1px 0;
+        background-color: #721200;
+        color: #fff;
+        font-family: 'lustria', sans-serif;
+        font-weight: bold;
+        width: 30px;
+        padding: 0;
+    }
+}
