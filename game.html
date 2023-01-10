@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--js and css links-->
+    <!--jquery and css links-->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="jquery-3.6.1.min.js"></script>
     <!--favicon links-->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/android-chrome-512x512.png">
@@ -52,10 +53,10 @@
         </div>
         <div id="container-left">
             <div>
-                <button id="undo" tooltip="undo" class="digit-btn" aria-label="undo previous action"><i class="fa-solid fa-rotate-left"></i></button>
+                <button id="undo" onclick="undo()" class="digit-btn" aria-label="undo previous action"><i class="fa-solid fa-rotate-left"></i></button>
             </div>
             <div>
-                <button id="redo" class="digit-btn" aria-label="redo any undo actions"><i class="fa-solid fa-rotate-right"></i></button>
+                <button id="redo" onclick="redo()"class="digit-btn" aria-label="redo any undo actions"><i class="fa-solid fa-rotate-right"></i></button>
             </div>
             <div>
                 <button id="pause" class="digit-btn" aria-label="toggle pause on or off"><i class="fa-solid fa-pause"></i></button>

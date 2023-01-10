@@ -57,13 +57,31 @@ function deselect() {
     })
 }
 
+function unselect() {
+    digits.forEach(function(same_digit) {
+        same_digit.addEventListener('click', function() {
+            if (same_digit.style.background === 'green') {
+                same_digit.style.background = '#721200';
+            } else {
+                same_digit.style.background = 'green'
+            }
+        });
+    })
+}
+
 digits.forEach(function(digit) {
     digit.addEventListener('click', function() {
         chosen = this.innerHTML
         deselect()
-        this.style.background = 'green'
+        unselect()
+        this.style.background = 'green'   
+        
+        
     })
 })
+
+
+
 ////////////////////////////////////////////
 
 
@@ -78,4 +96,81 @@ tiles.forEach(function(tile) {
         }
     })
 })
+
+///////////////////////////////////////////
+
+
+//Undo and Redo click
+
+var state;
+var history_stack = [];
+var future_stack = [];
+var interval;
+
+$(document).ready(function(){
+  initState();
+})
+
+$("#undo div").on("click", function(e){
+  var box = $(e.target);
+  box.toggleClass("tile");
+  setBox(e.target.id,box.hasClass("tile"));
+})
+
+
+function initState(){
+  var boxes = {};
+  for(var i = 1; i <= 24; i++){
+    var box = "box"+i;
+    boxes[box] = false;
+  }
+  state = Immutable.Map(boxes);
+}
+
+
+//actually creates an entirely new state
+//because the state is immutable
+function setBox(key,value){
+  //new
+  var newState = state.set(key,value);
+  //save old
+  history_stack.push(state);
+  //set current
+  state = newState;
+}
+
+function undo(){
+  if(history_stack.length > 0){
+    var prevState = history_stack.pop();
+    future_stack.push(state);
+    setState(prevState);
+    return true;
+  }else{
+    return false;
+  }
+}
+
+function redo(){
+  if(future_stack.length > 0){
+    var nextState = future_stack.pop();
+    history_stack.push(state);
+    setState(nextState);
+    return true
+  }else{
+    return false;
+  }
+}
+
+
+//actually creates an entirely new state
+//because the state is immutable
+function setState(newState){
+  for(var i = 1; i <= 81; i++){
+    var key = "box"+i;
+    var value = newState.get(key);
+    value ? $("#"+key).addClass("selected") : $("#"+key).removeClass("selected");
+  }
+  state = newState;
+}
+
 
