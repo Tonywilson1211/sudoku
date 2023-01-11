@@ -1,3 +1,8 @@
+console.clear()
+
+// var $ = document.querySelector.bind(document)
+// var $$ = document.querySelectorAll.bind(document)
+
 var boards = [
     [
       "6      7      5 2      1   362    81  96     71  9 4 5 2   651   78    345       ",
@@ -18,13 +23,11 @@ var boards = [
 var boxes = document.querySelectorAll('.box')
 
 function populateTiles(diffIndex) {
-    boxes.forEach(function(box, index) {
-        var tiles = box.querySelectorAll('.tile')
-        var point = index * 9
-        tiles.forEach(function(tile, n) {
-            var number = boards[diffIndex][0][point+n]
-            tile.innerHTML = number
-        })
+    var tiles = document.querySelectorAll('.tile')
+    tiles.forEach(function(_, n) {
+        var tile = document.querySelector(`.tile#t${n}`)
+        var number = boards[diffIndex][0][n]
+        tile.innerHTML = number
     })
 }
 
@@ -38,11 +41,22 @@ var diff = document.querySelector('#diff')
 var diffIndex = 0
 var difficulties = ['Easy', 'Medium', 'Hard']
 
-diff.addEventListener('click', function() {
-    diffIndex = diffIndex+1 % 3
+function switchDifficulty () {
+    diffIndex = (diffIndex+1) % 3
     var difficultyText = difficulties[diffIndex]
     diff.innerHTML = difficultyText
     populateTiles(diffIndex)
+    memory = []
+    future = []
+}
+
+diff.addEventListener('click', function() {
+    if (memory.length && confirm('This action will start a new game, are you sure?')) {
+        switchDifficulty()
+    } else {
+        switchDifficulty()
+    } 
+    
 })
 ///////////////////////////////////////////
 
@@ -57,7 +71,7 @@ var reset = null
 digits.forEach(function(digit) {
     digit.addEventListener('click', function() {
         chosen = this.innerHTML
-        this.style.background = 'green'   
+        this.style.background = 'green'
     })
 })
 
@@ -82,27 +96,101 @@ digits.forEach(function(digit) {
 
 
 
-
-
-
 ////////////////////////////////////////////
 
 
 //Tiles click
+
+var memory = []
+
 var tiles = document.querySelectorAll('.tile')
 tiles.forEach(function(tile) {
     tile.addEventListener('click', function() {
         if (chosen != null) {
+            var prev = tile.innerHTML
+            var id = tile.id
+            memory.push({id, prev, chosen})
+
             this.innerHTML = chosen
-            chosen = null
-            deselect()
+            future = []
         }
     })
 })
 
-
-
 ///////////////////////////////////////////
 
 
+//Undo button
+
+var future = []
+
+var undo = document.querySelector('#undo')
+undo.addEventListener('click', function(){
+    var prev_action = memory.splice(-1)[0]
+
+    if (prev_action) {
+        future.push(prev_action)
+        var {id, prev} = prev_action
+
+        var target = document.querySelector(`.tile#${id}`)
+        target.innerHTML = prev
+    } else {
+        alert('No undo state')
+    }
+})
+
+var redo = document.querySelector('#redo')
+redo.addEventListener('click', function(){
+    var prev_action = future.splice(-1)[0]
+
+    if (prev_action) {
+        memory.push(prev_action)
+        var {id, chosen} = prev_action
+
+        var target = document.querySelector(`.tile#${id}`)
+        target.innerHTML = chosen
+    }
+
+})
+
+
+//Timer
+var timer = document.querySelector('#timer')
+var time = document.querySelector('#timer > span')
+var seconds = 0
+var minutes = 0
+var timing
+
+function time_fn() {
+    if (timing) {
+        seconds++
+        if (seconds == 60) {
+            seconds = 0
+            minutes += 1
+        }
+
+        time.innerHTML = `${minutes}:${String(seconds).padStart(2, '0')}`
+        
+        setTimeout(time_fn, 1000)
+    }
+}
+
+function timer_increment() {
+    timing = true
+    time_fn()
+}
+
+timer_increment()
+
+
+//Pause 
+timer.addEventListener('click', function() {
+    if (timing) {
+        timing = false
+        time.style.display = 'none'
+    } else {
+        timer_increment()
+        time.style.display = 'unset'
+    }
+})
 
