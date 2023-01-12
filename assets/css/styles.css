@@ -160,8 +160,20 @@ footer {
     height: 50px;
     width: 50px;
     border: dotted white 1px;
+}
+
+.tile > span:nth-child(1) {
     font-size: x-large;
     font-weight: bold;
+    color: green;
+}
+
+.tile > span:nth-child(1).preset {
+    color: black;
+}
+
+.tile.incorrect > span:nth-child(1){
+    color: red;
 }
 
 #box2, #box4, #box6, #box8 {
@@ -228,6 +240,34 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#notes.active {
+    background-color: blue;
+}
+
+.tile {
+    position: relative;
+}
+
+.note {
+    position: absolute;
+}
+
+
+
+.note.n1 {
+    left: 0;
+    top: 0;
+}
+
+.note.n2 {
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.note.n3 {
+
 }
 
 @media screen and (max-width:450px) {

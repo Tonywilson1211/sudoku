@@ -25,9 +25,12 @@ var boxes = document.querySelectorAll('.box')
 function populateTiles(diffIndex) {
     var tiles = document.querySelectorAll('.tile')
     tiles.forEach(function(_, n) {
-        var tile = document.querySelector(`.tile#t${n}`)
+        var tile = document.querySelector(`.tile#t${n} > span`)
         var number = boards[diffIndex][0][n]
         tile.innerHTML = number
+        if (number != ' '){
+            tile.classList.add('preset')
+        }
     })
 }
 
@@ -42,12 +45,25 @@ var diffIndex = 0
 var difficulties = ['Easy', 'Medium', 'Hard']
 
 function switchDifficulty () {
+
+    clearInterval(timing[diffIndex])
+
     diffIndex = (diffIndex+1) % 3
     var difficultyText = difficulties[diffIndex]
     diff.innerHTML = difficultyText
     populateTiles(diffIndex)
     memory = []
     future = []
+    errorCounter.innerHTML = 0 
+    document.querySelectorAll('.tile.incorrect').forEach(function(tile){ 
+        tile.classList.remove('incorrect')
+    })
+
+    seconds = 0
+    minutes = 0
+
+    timer_increment()
+    
 }
 
 diff.addEventListener('click', function() {
@@ -70,26 +86,35 @@ var reset = null
 
 digits.forEach(function(digit) {
     digit.addEventListener('click', function() {
-        chosen = this.innerHTML
-        this.style.background = 'green'
-    })
-})
-
-digits.forEach(function(digit) {
-    digit.addEventListener('click', function() {
-        if (reset == this) {
-            this.style.background = '#721200'
-            chosen = null
-            reset = null
-        } else {
-            if (reset) {
-                reset.style.background = '#721200'
+        if (noting == false) {
+            if (reset == this) {
+                this.style.background = '#721200'
+                chosen = null
+                reset = null
+            } else {
+                if (reset) {
+                    reset.style.background = '#721200'
+                }
+                chosen = this.innerHTML
+                
+                this.style.background = 'green'
+                reset = this
             }
-            chosen = this.innerHTML
-            
-            this.style.background = 'green'
-            reset = this
+        } else {
+            if (reset == this) {
+                this.style.background = '#721200'
+                reset = null
+                chosen = null
+            } else {
+                if (reset) {
+                    reset.style.background = '#721200'
+                }
+                chosen = this.innerHTML
+                this.style.background = 'blue'
+                reset = this
+            }
         }
+        
     });
 });
 
@@ -102,18 +127,63 @@ digits.forEach(function(digit) {
 //Tiles click
 
 var memory = []
+let errors = 0
+let errorCounter = document.querySelector('#error > span')
+
 
 var tiles = document.querySelectorAll('.tile')
 tiles.forEach(function(tile) {
     tile.addEventListener('click', function() {
-        if (chosen != null) {
-            var prev = tile.innerHTML
-            var id = tile.id
-            memory.push({id, prev, chosen})
-
-            this.innerHTML = chosen
-            future = []
+        if (!this.querySelector('span').classList.contains('preset')) {
+            if (!noting) {
+                if (chosen != null) {
+                    var prev = this.querySelector('span').innerHTML
+                    var id = this.id
+                    memory.push({id, prev, chosen})
+        
+                    this.querySelector('span').innerHTML = chosen
+                    future = []
+    
+                    let span2 = this.querySelector('span:nth-child(2)')
+                    span2.innerHTML = ''
+    
+                    let index = parseInt(this.id.substring(1))
+                    let expected = boards[diffIndex][1][index]
+    
+                    if (chosen != expected) {
+                        this.classList.add('incorrect')
+                        errors += 1 
+                        errorCounter.innerHTML = errors
+                    } else {
+                        this.classList.remove('incorrect')
+                    }
+                    
+                }
+            } else {
+                let span2 = this.querySelector('span:nth-child(2)')
+                let existing = span2.querySelector(`.n${chosen}`)
+    
+                if (!existing) {
+                    let div = document.createElement('div') 
+                    div.className = `note n${chosen}`
+                    div.innerHTML = chosen
+                    span2.appendChild(div)
+    
+                    let numbers = [1,2,3,4,5,6,7,8,9]
+                    numbers.forEach(function(n) {
+                        let note = span2.querySelector(`.note.n${n}`)
+                        if (note) {
+                            span2.appendChild(note)
+                        }
+                    })
+    
+                } else {
+                    existing.remove()
+                }
+            }
         }
+        
+           
     })
 })
 
@@ -132,7 +202,7 @@ undo.addEventListener('click', function(){
         future.push(prev_action)
         var {id, prev} = prev_action
 
-        var target = document.querySelector(`.tile#${id}`)
+        var target = document.querySelector(`.tile#${id} > span`)
         target.innerHTML = prev
     } else {
         alert('No undo state')
@@ -147,7 +217,7 @@ redo.addEventListener('click', function(){
         memory.push(prev_action)
         var {id, chosen} = prev_action
 
-        var target = document.querySelector(`.tile#${id}`)
+        var target = document.querySelector(`.tile#${id} > span`)
         target.innerHTML = chosen
     }
 
@@ -159,10 +229,12 @@ var timer = document.querySelector('#timer')
 var time = document.querySelector('#timer > span')
 var seconds = 0
 var minutes = 0
-var timing
+var timing = {0:null, 1:null, 2:null}
 
-function time_fn() {
-    if (timing) {
+
+function timer_increment() {
+
+    timing[diffIndex] = setInterval(function () {
         seconds++
         if (seconds == 60) {
             seconds = 0
@@ -170,14 +242,8 @@ function time_fn() {
         }
 
         time.innerHTML = `${minutes}:${String(seconds).padStart(2, '0')}`
-        
-        setTimeout(time_fn, 1000)
-    }
-}
-
-function timer_increment() {
-    timing = true
-    time_fn()
+    }, 1000)
+    
 }
 
 timer_increment()
@@ -185,8 +251,8 @@ timer_increment()
 
 //Pause 
 timer.addEventListener('click', function() {
-    if (timing) {
-        timing = false
+    if (timing[diffIndex]) {
+        timing[diffIndex] = false
         time.style.display = 'none'
     } else {
         timer_increment()
@@ -196,7 +262,10 @@ timer.addEventListener('click', function() {
 
 ///////////////////////////////////////////
 
-let audio = new Audio('/assets/audio/audio1.mp3')
+//Music
+
+let audio = new Audio('/assets/audio/audio.mp3')
+audio.loop = true
 let playPauseBtn = document.querySelector('#audio-btn')
 let count = 0
 
@@ -206,23 +275,47 @@ function playPause() {
             count = 1        
             audio.play()
             playPauseBtn.innerHTML = 'Pause Music'
+            
         } else {
             count = 0
             audio.pause()
             playPauseBtn.innerHTML = 'Play Music'
         } 
     })
-  }
+}
  
+playPause()
 
-  function loop() {
-    audio.addEventListener('ended', function(){
-        if (count == 0) {
-            audio.loop = true
-  }})
-  }
+///////////////////////////////////////////
 
-  playPause()
-  loop()
-  
+// notes
+var noting = false
+let notes = document.querySelector('#notes')
 
+notes.addEventListener('click', function(){
+    if (noting == false) {
+        noting = true
+        notes.classList.add('active')
+    } else {
+        noting = false 
+        notes.classList.remove('active')
+        if (reset) {
+            reset.style.background = '#721200'
+            reset = null
+        }
+    }
+})
+
+///////////////////////////////////////////
+
+//Auto Solve
+
+let autoSolve = document.querySelector('#auto-solve')
+
+autoSolve.addEventListener('click', function(){
+    let answers = boards[diffIndex][1].split('')
+    answers.forEach(function(answer, n){
+        let solve = document.querySelector(`#t${n} > span`) 
+        solve.innerHTML = answer
+    })
+})
