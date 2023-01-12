@@ -194,3 +194,35 @@ timer.addEventListener('click', function() {
     }
 })
 
+///////////////////////////////////////////
+
+let audio = new Audio('/assets/audio/audio1.mp3')
+let playPauseBtn = document.querySelector('#audio-btn')
+let count = 0
+
+function playPause() {
+    playPauseBtn.addEventListener('click', function() {
+        if (count == 0) {
+            count = 1        
+            audio.play()
+            playPauseBtn.innerHTML = 'Pause Music'
+        } else {
+            count = 0
+            audio.pause()
+            playPauseBtn.innerHTML = 'Play Music'
+        } 
+    })
+  }
+ 
+
+  function loop() {
+    audio.addEventListener('ended', function(){
+        if (count == 0) {
+            audio.loop = true
+  }})
+  }
+
+  playPause()
+  loop()
+  
+
