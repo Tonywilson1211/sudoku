@@ -282,7 +282,7 @@ timer.addEventListener("click", function () {
 
 //Music
 
-let audio = new Audio('/assets/audio/audio.mp3')
+let audio = new Audio('../assets/audio/audio.mp3')
 audio.loop = true
 let playPauseBtn = document.querySelector('#audio-btn')
 let count = 0
