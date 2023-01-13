@@ -48,35 +48,32 @@ var diff = document.querySelector('#diff')
 var diffIndex = 0
 var difficulties = ['Easy', 'Medium', 'Hard']
 var newGame = document.querySelector('#new-game')
+var difficultyText
 
 function switchDifficulty () {
-    
     diffIndex = (diffIndex+1) % 3
-    var difficultyText = difficulties[diffIndex]
+    difficultyText = difficulties[diffIndex]
     diff.innerHTML = difficultyText
     populateTiles(diffIndex)
-    
-    
     memory = []
     future = []
 }
 
 diff.addEventListener('click', function() {
-    if (memory.length && confirm('This action will start a new game, are you sure?')) {
+    if (confirm('This action will start a new game with a different difficulty')) {
         switchDifficulty()
         errorReset()
-        
-        
+        timerReset()
     } else {
         switchDifficulty()
     } 
 })
 
 newGame.addEventListener('click', function() {
-    if (memory.length && confirm('This action will restart the game, are you sure?')) {
+    if (confirm('This action will restart the game')) {
         populateTiles(diffIndex)
         errorReset()
-        
+        timerReset()
     } else {
         populateTiles(diffIndex)
     } 
@@ -88,6 +85,7 @@ function errorReset() {
     document.querySelector("#error > span").innerHTML = errors;
 }
 
+
 //Number buttons
 var digits = document.querySelectorAll('#digits > .digit-btn:nth-child(n+2)')
 var chosen = null
@@ -97,6 +95,7 @@ var reset = null
 
 digits.forEach(function(digit) {
     digit.addEventListener('click', function() {
+        
         if (noting == false) {
             if (reset == this) {
                 this.style.background = '#721200'
@@ -143,6 +142,7 @@ var errorCounter = document.querySelector('#error > span')
 
 
 var tiles = document.querySelectorAll('.tile')
+
 tiles.forEach(function(tile) {
     tile.addEventListener('click', function() {
         if (!this.querySelector('span').classList.contains('preset')) {
@@ -192,7 +192,7 @@ tiles.forEach(function(tile) {
             }
         }
         
-           
+        checkIfCompleted() 
     })
 })
 
@@ -234,17 +234,17 @@ redo.addEventListener('click', function(){
 
 })
 
+/////////////////////////////////////////
 
 //Timer
+
 var timer = document.querySelector('#timer')
 var time = document.querySelector('#timer > span')
 var seconds = 0
 var minutes = 0
 var timing = 0
 
-
 function timer_increment() {
-
     timing = setInterval(function () {
         seconds++
         if (seconds >= 60) {
@@ -254,23 +254,28 @@ function timer_increment() {
 
         time.innerHTML = `${minutes}:${String(seconds).padStart(2, '0')}`
     }, 1000)
-    
 }
 
 timer_increment()
 
+function timerReset() {
+    seconds = -1;
+    minutes = 0;
+    time.innerHTML = `0:00`;
+}
+    
 
-//Pause 
 
 timer.addEventListener("click", function () {
     if (timing) {
-      clearInterval(timing);
-      timing = null;
-      time.innerHTML = "Paused";
+        clearInterval(timing);
+        timing = null;
+        time.innerHTML = "Paused";
     } else {
-      timer_increment();
+        timer_increment();
     }
 })
+
 
 
 ///////////////////////////////////////////
@@ -326,9 +331,42 @@ notes.addEventListener('click', function(){
 let autoSolve = document.querySelector('#auto-solve')
 
 autoSolve.addEventListener('click', function(){
-    let answers = boards[diffIndex][1].split('')
-    answers.forEach(function(answer, n){
-        let solve = document.querySelector(`#t${n} > span`) 
-        solve.innerHTML = answer
-    })
-})
+    if (confirm('This action will reveal all answers and end the game')) {
+            let answers = boards[diffIndex][1].split('')
+            answers.forEach(function(answer, n){
+                let solve = document.querySelector(`#t${n} > span`) 
+                solve.innerHTML = answer
+            } 
+            ) 
+            alert('Better luck next time. Click New Game or Difficulty buttons to have another go!')
+
+    }})
+
+///////////////////////////////////////////
+
+//Completed Game Conditions
+
+var completed = true;
+
+function checkIfCompleted() {
+    var tiles = document.querySelectorAll('.tile');
+    var count = 0;
+    tiles.forEach(function(_, n) {
+        var tile = document.querySelector(`.tile#t${n} > span`);
+        var number = tile.innerHTML;
+        if(number == ' ') {
+            count++;
+        }
+        if(count == 0 && completed) {
+            var time = document.querySelector('#timer > span').innerHTML;
+            alert(`Congratulations! You have completed this game of Sudoku. You finished ${difficultyText}, in ${time} with ${errors} errors.`);
+        }
+    });
+    if(count == 0 && !completed) {
+        alert("Uh Oh! Something went wrong because this isn't correct. Try going over answers or start a new game.");
+    }
+}
+
+
+
+
