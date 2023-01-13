@@ -30,52 +30,63 @@ function populateTiles(diffIndex) {
         tile.innerHTML = number
         if (number != ' '){
             tile.classList.add('preset')
-        }
+            
+        } else {
+            tile.classList.remove('preset')
+            
+        } 
     })
 }
 
 populateTiles(0)
+
 ///////////////////////////////////////////
 
 
 //Changing the difficulty text
 var diff = document.querySelector('#diff')
-
 var diffIndex = 0
 var difficulties = ['Easy', 'Medium', 'Hard']
+var newGame = document.querySelector('#new-game')
 
 function switchDifficulty () {
-
-    clearInterval(timing[diffIndex])
-
+    
     diffIndex = (diffIndex+1) % 3
     var difficultyText = difficulties[diffIndex]
     diff.innerHTML = difficultyText
     populateTiles(diffIndex)
+    
+    
     memory = []
     future = []
-    errorCounter.innerHTML = 0 
-    document.querySelectorAll('.tile.incorrect').forEach(function(tile){ 
-        tile.classList.remove('incorrect')
-    })
-
-    seconds = 0
-    minutes = 0
-
-    timer_increment()
-    
 }
 
 diff.addEventListener('click', function() {
     if (memory.length && confirm('This action will start a new game, are you sure?')) {
         switchDifficulty()
+        errorReset()
+        
+        
     } else {
         switchDifficulty()
     } 
-    
 })
-///////////////////////////////////////////
 
+newGame.addEventListener('click', function() {
+    if (memory.length && confirm('This action will restart the game, are you sure?')) {
+        populateTiles(diffIndex)
+        errorReset()
+        
+    } else {
+        populateTiles(diffIndex)
+    } 
+})
+
+//Errors
+function errorReset() {
+    errors = 0;
+    document.querySelector("#error > span").innerHTML = errors;
+}
 
 //Number buttons
 var digits = document.querySelectorAll('#digits > .digit-btn:nth-child(n+2)')
@@ -110,7 +121,7 @@ digits.forEach(function(digit) {
                     reset.style.background = '#721200'
                 }
                 chosen = this.innerHTML
-                this.style.background = 'blue'
+                this.style.background = 'skyblue'
                 reset = this
             }
         }
@@ -127,8 +138,8 @@ digits.forEach(function(digit) {
 //Tiles click
 
 var memory = []
-let errors = 0
-let errorCounter = document.querySelector('#error > span')
+var errors = 0
+var errorCounter = document.querySelector('#error > span')
 
 
 var tiles = document.querySelectorAll('.tile')
@@ -154,8 +165,6 @@ tiles.forEach(function(tile) {
                         this.classList.add('incorrect')
                         errors += 1 
                         errorCounter.innerHTML = errors
-                    } else {
-                        this.classList.remove('incorrect')
                     }
                     
                 }
@@ -205,7 +214,7 @@ undo.addEventListener('click', function(){
         var target = document.querySelector(`.tile#${id} > span`)
         target.innerHTML = prev
     } else {
-        alert('No undo state')
+        alert('Nothing to Undo!')
     }
 })
 
@@ -219,6 +228,8 @@ redo.addEventListener('click', function(){
 
         var target = document.querySelector(`.tile#${id} > span`)
         target.innerHTML = chosen
+    } else {
+        alert('Nothing to Redo!')
     }
 
 })
@@ -229,14 +240,14 @@ var timer = document.querySelector('#timer')
 var time = document.querySelector('#timer > span')
 var seconds = 0
 var minutes = 0
-var timing = {0:null, 1:null, 2:null}
+var timing = 0
 
 
 function timer_increment() {
 
-    timing[diffIndex] = setInterval(function () {
+    timing = setInterval(function () {
         seconds++
-        if (seconds == 60) {
+        if (seconds >= 60) {
             seconds = 0
             minutes += 1
         }
@@ -250,15 +261,17 @@ timer_increment()
 
 
 //Pause 
-timer.addEventListener('click', function() {
-    if (timing[diffIndex]) {
-        timing[diffIndex] = false
-        time.style.display = 'none'
+
+timer.addEventListener("click", function () {
+    if (timing) {
+      clearInterval(timing);
+      timing = null;
+      time.innerHTML = "Paused";
     } else {
-        timer_increment()
-        time.style.display = 'unset'
+      timer_increment();
     }
 })
+
 
 ///////////////////////////////////////////
 
