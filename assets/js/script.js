@@ -40,6 +40,7 @@ function populateTiles(diffIndex) {
 
 populateTiles(0)
 
+
 ///////////////////////////////////////////
 
 
@@ -64,6 +65,8 @@ diff.addEventListener('click', function() {
         switchDifficulty()
         errorReset()
         timerReset()
+        newGame()
+        endGame()
     } else {
         switchDifficulty()
     } 
@@ -74,6 +77,8 @@ newGame.addEventListener('click', function() {
         populateTiles(diffIndex)
         errorReset()
         timerReset()
+        newGame()
+        endGame()
     } else {
         populateTiles(diffIndex)
     } 
@@ -143,9 +148,13 @@ var errorCounter = document.querySelector('#error > span')
 
 var tiles = document.querySelectorAll('.tile')
 
+
+
 tiles.forEach(function(tile) {
     tile.addEventListener('click', function() {
-        if (!this.querySelector('span').classList.contains('preset')) {
+        
+            
+         if (!this.querySelector('span').classList.contains('preset')) {
             if (!noting) {
                 if (chosen != null) {
                     var prev = this.querySelector('span').innerHTML
@@ -159,7 +168,7 @@ tiles.forEach(function(tile) {
                     span2.innerHTML = ''
     
                     let index = parseInt(this.id.substring(1))
-                    let expected = boards[diffIndex][1][index]
+                    var expected = boards[diffIndex][1][index]
     
                     if (chosen != expected) {
                         this.classList.add('incorrect')
@@ -192,9 +201,11 @@ tiles.forEach(function(tile) {
             }
         }
         
-        checkIfCompleted() 
+        endGame()
     })
 })
+
+
 
 ///////////////////////////////////////////
 
@@ -346,27 +357,7 @@ autoSolve.addEventListener('click', function(){
 
 //Completed Game Conditions
 
-var completed = true;
-
-function checkIfCompleted() {
-    var tiles = document.querySelectorAll('.tile');
-    var count = 0;
-    tiles.forEach(function(_, n) {
-        var tile = document.querySelector(`.tile#t${n} > span`);
-        var number = tile.innerHTML;
-        if(number == ' ') {
-            count++;
-        }
-        if(count == 0 && completed) {
-            var time = document.querySelector('#timer > span').innerHTML;
-            alert(`Congratulations! You have completed this game of Sudoku. You finished ${difficultyText}, in ${time} with ${errors} errors.`);
-        }
-    });
-    if(count == 0 && !completed) {
-        alert("Uh Oh! Something went wrong because this isn't correct. Try going over answers or start a new game.");
-    }
-}
-
-
-
-
+            alert(`Congratulations! You have completed this game of Sudoku!! You completed the ${diff.innerHTML} setting in ${time} with ${errors} errors.`);
+  
+            alert(`Game Over. You have not been successful on this occasion. Try starting a new game or changing the difficulty level.`);
+    
