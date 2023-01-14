@@ -15,8 +15,11 @@
 }
 
 body {
-    background: url('../images/site/background.jpg');
+    background-image: url('../images/site/background.jpg');
     background-size: cover;
+    
+   
+  
 }
 
 h1 {
@@ -85,6 +88,21 @@ h2 {
 #tutorial:hover {
     color: #721200;
     text-decoration: underline;
+}
+
+#tutorial {
+    text-decoration: underline;
+}
+
+#board-image {
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    transform: scale(0.75);
+    border: 6px solid black;
+    
 }
 
 
