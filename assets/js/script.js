@@ -1,9 +1,9 @@
 console.clear()
 
-// var $ = document.querySelector.bind(document)
-// var $$ = document.querySelectorAll.bind(document)
+// let $ = document.querySelector.bind(document)
+// let $$ = document.querySelectorAll.bind(document)
 
-var boards = [
+let boards = [
     [
       "6      7     85 2      1   362    81  96     71  9 4 5 2   651   78    345       ",
       "685329174971485326234761859362574981549618732718293465823946517197852643456137298"
@@ -20,13 +20,13 @@ var boards = [
 
 
 //Looping through the board numbers
-var boxes = document.querySelectorAll('.box')
+let boxes = document.querySelectorAll('.box')
 
 function populateTiles(diffIndex) {
-    var tiles = document.querySelectorAll('.tile')
+    let tiles = document.querySelectorAll('.tile')
     tiles.forEach(function(_, n) {
-        var tile = document.querySelector(`.tile#t${n} > span`)
-        var number = boards[diffIndex][0][n]
+        let tile = document.querySelector(`.tile#t${n} > span`)
+        let number = boards[diffIndex][0][n]
         tile.innerHTML = number
         if (number != ' '){
             tile.classList.add('preset')
@@ -41,15 +41,18 @@ function populateTiles(diffIndex) {
 populateTiles(0)
 
 
+           
 ///////////////////////////////////////////
 
 
+
+
 //Changing the difficulty text
-var diff = document.querySelector('#diff')
-var diffIndex = 0
-var difficulties = ['Easy', 'Medium', 'Hard']
-var newGame = document.querySelector('#new-game')
-var difficultyText
+let diff = document.querySelector('#diff')
+let diffIndex = 0
+let difficulties = ['Easy', 'Medium', 'Hard']
+let newGame = document.querySelector('#new-game')
+let difficultyText
 
 function switchDifficulty () {
     diffIndex = (diffIndex+1) % 3
@@ -92,13 +95,14 @@ function errorReset() {
 
 
 //Number buttons
-var digits = document.querySelectorAll('#digits > .digit-btn:nth-child(n+2)')
-var chosen = null
-var reset = null
+let digits = document.querySelectorAll('#digits > .digit-btn:nth-child(n+2)')
+let chosen = null
+let reset = null
 
 
 
 digits.forEach(function(digit) {
+    
     digit.addEventListener('click', function() {
         
         if (noting == false) {
@@ -130,8 +134,8 @@ digits.forEach(function(digit) {
             }
         }
         
-    });
-});
+    })});
+
 
 
 
@@ -141,35 +145,34 @@ digits.forEach(function(digit) {
 
 //Tiles click
 
-var memory = []
-var errors = 0
-var errorCounter = document.querySelector('#error > span')
+let memory = []
+let errors = 0
+let errorCounter = document.querySelector('#error > span')
 
 
-var tiles = document.querySelectorAll('.tile')
+let tiles = document.querySelectorAll('.tile')
 
 
 
 tiles.forEach(function(tile) {
-    tile.addEventListener('click', function() {
-        
-            
+    tile.addEventListener('click', function(event) {
          if (!this.querySelector('span').classList.contains('preset')) {
             if (!noting) {
                 if (chosen != null) {
-                    var prev = this.querySelector('span').innerHTML
-                    var id = this.id
+                    let prev = this.querySelector('span').innerHTML
+                    let id = this.id
                     memory.push({id, prev, chosen})
         
                     this.querySelector('span').innerHTML = chosen
+                    endGame()
                     future = []
     
                     let span2 = this.querySelector('span:nth-child(2)')
                     span2.innerHTML = ''
     
                     let index = parseInt(this.id.substring(1))
-                    var expected = boards[diffIndex][1][index]
-    
+                    let expected = boards[diffIndex][1][index]
+                    
                     if (chosen != expected) {
                         this.classList.add('incorrect')
                         errors += 1 
@@ -201,7 +204,7 @@ tiles.forEach(function(tile) {
             }
         }
         
-        endGame()
+        
     })
 })
 
@@ -212,32 +215,32 @@ tiles.forEach(function(tile) {
 
 //Undo button
 
-var future = []
+let future = []
 
-var undo = document.querySelector('#undo')
+let undo = document.querySelector('#undo')
 undo.addEventListener('click', function(){
-    var prev_action = memory.splice(-1)[0]
+    let prev_action = memory.splice(-1)[0]
 
     if (prev_action) {
         future.push(prev_action)
-        var {id, prev} = prev_action
+        let {id, prev} = prev_action
 
-        var target = document.querySelector(`.tile#${id} > span`)
+        let target = document.querySelector(`.tile#${id} > span`)
         target.innerHTML = prev
     } else {
         alert('Nothing to Undo!')
     }
 })
 
-var redo = document.querySelector('#redo')
+let redo = document.querySelector('#redo')
 redo.addEventListener('click', function(){
-    var prev_action = future.splice(-1)[0]
+    let prev_action = future.splice(-1)[0]
 
     if (prev_action) {
         memory.push(prev_action)
-        var {id, chosen} = prev_action
+        let {id, chosen} = prev_action
 
-        var target = document.querySelector(`.tile#${id} > span`)
+        let target = document.querySelector(`.tile#${id} > span`)
         target.innerHTML = chosen
     } else {
         alert('Nothing to Redo!')
@@ -249,11 +252,11 @@ redo.addEventListener('click', function(){
 
 //Timer
 
-var timer = document.querySelector('#timer')
-var time = document.querySelector('#timer > span')
-var seconds = 0
-var minutes = 0
-var timing = 0
+let timer = document.querySelector('#timer')
+let time = document.querySelector('#timer > span')
+let seconds = 0
+let minutes = 0
+let timing = 0
 
 function timer_increment() {
     timing = setInterval(function () {
@@ -278,14 +281,26 @@ function timerReset() {
 
 
 timer.addEventListener("click", function () {
+    
     if (timing) {
         clearInterval(timing);
         timing = null;
-        time.innerHTML = "Paused";
+        time.innerHTML = "||";
+        
     } else {
         timer_increment();
     }
-})
+
+    
+});
+
+
+
+
+    
+
+// call the function whenever the condition time.innerHTML == '| |' is met
+
 
 
 
@@ -318,7 +333,7 @@ playPause()
 ///////////////////////////////////////////
 
 // notes
-var noting = false
+let noting = false
 let notes = document.querySelector('#notes')
 
 notes.addEventListener('click', function(){
@@ -353,11 +368,34 @@ autoSolve.addEventListener('click', function(){
 
     }})
 
-///////////////////////////////////////////
+     
+  
+    ///////////////////////////////////////////
 
 //Completed Game Conditions
 
-            alert(`Congratulations! You have completed this game of Sudoku!! You completed the ${diff.innerHTML} setting in ${time} with ${errors} errors.`);
-  
-            alert(`Game Over. You have not been successful on this occasion. Try starting a new game or changing the difficulty level.`);
+function endGame() {
+    let allFilled = true
+    let allCorrect = true
+    tiles.forEach(function(tile) {
+        let index = parseInt(tile.id.substring(1))
+        let expected = boards[diffIndex][1][index]
+        let value = tile.querySelector('span').innerHTML
+
+        if (value === ' ') {
+            allFilled = false;
+        } else {
+            if (value !== expected) {
+                allCorrect = false
+            }
+        }
+    })
+    if (allFilled) {
+        if (allCorrect) {
+            alert(`Congratulations! You have completed this game of Sudoku!! You completed the ${diff.innerHTML} setting in ${time.innerHTML} with ${errors} errors.`)
+        } else {
+            alert(`Game Over. You have not been successful on this occasion. Try starting a new game or changing the difficulty level.`)
+        }
+    }
+    }        
     

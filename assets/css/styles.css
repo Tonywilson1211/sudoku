@@ -251,7 +251,7 @@ footer {
 
 
 .note.n1 {
-    left: 0;
+    left: 2px;
     top: 0;
 }
 
@@ -262,11 +262,11 @@ footer {
 
 .note.n3 {
     top: 0;
-    right: 0;
+    right: 2px;
 }
 
 .note.n4 {
-    left: 0;
+    left: 2px;
     transform: translateY(-50%);
 }
 
@@ -277,13 +277,13 @@ footer {
 }
 
 .note.n6 {
-    right: 0;
+    right: 2px;
     transform: translateY(-50%);
 }
 
 .note.n7 {
     bottom: 0;
-    left: 0;
+    left: 2px;
 }
 
 .note.n8 {
@@ -293,7 +293,7 @@ footer {
 
 .note.n9 {
     bottom: 0;
-    right: 0;
+    right: 2px;
 }
 
 
@@ -310,10 +310,7 @@ footer {
         font-size: 12px;
     }
     
-    .gamepage-buttons:hover {
-        background-color: #fff;
-        color: #721200;
-    }
+    
 
     #container-left {
         margin-right: 5px;
@@ -366,5 +363,39 @@ footer {
         font-size: 12px;
         width: 130px;
         height: 45px;
+    }
+
+    .gamepage-buttons {
+        font-size: 0.7rem;
+        font-weight: normal;
+    }
+
+    .counter-text {
+        font-size: 0.7rem;
+    }
+    
+    
+      
+
+    
+
+    .gamepage-buttons:active, .digit-btn:active {
+        box-shadow: 0 0 0 white;
+        margin: 0px;
+    }
+    .how-to-play:active  {
+        box-shadow: 0 0 0 white;
+        margin-bottom: 0px;
+    }
+    .note {
+        position: absolute;
+        font-size: 0.4rem;
+    }
+    
+    .tile > span:nth-child(1) {
+        font-size: normal;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: black;
     }
 }
