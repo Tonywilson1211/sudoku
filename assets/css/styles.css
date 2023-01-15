@@ -31,19 +31,26 @@ h1 {
 h2 {
     font-family: 'permanent marker', sans-serif;
     font-size: 2.5rem;
-    margin-top: 25px;
+    margin-top: 50px;
     color: #721200;
+}
+
+h3 {
+    font-family: 'permanent marker', sans-serif;
+    font-size: 2rem;
+    color: #721200;
+    text-decoration: underline;
 }
 
 /* HOME PAGE CONFIG */
 
 /* homepage buttons */
-#homepage-buttons-container{
+.homepage-buttons-container{
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin: 50px 0;
 }
 
 .homepage-buttons {
@@ -59,6 +66,7 @@ h2 {
     border: 2px solid black;
     box-shadow: 2px 1px 2px gray;
     margin: 4px 10px 4px 10px;
+    
 }
 
 .homepage-buttons:hover {
@@ -75,8 +83,46 @@ h2 {
 /* homepage - rules section */
 
 #homepage-rules {
-    margin-bottom: 100px;
+    margin: 50px 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: top;
+    width: 90%;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
+
+#homepage-rules-left, #homepage-rules-right {
+    width: 100%;
+    margin: 0 20px;
+}
+
+#skyblue {
+    background-color: skyblue;
+    font-weight: bold;
+    color: black;
+}
+
+#green {
+    background-color: green;
+    color: white;
+}
+
+
+#homepage-rules-right i {
+    color: #721200;
+}
+
+#homepage-rules li {
+    text-align: center;
+    list-style-type: none;
+    font-size: 1rem;
+}
+
+#homepage-rules li:hover {
+    color: red;
+}
+
 
 #homepage-rules li, #tutorial {
     font-family: 'lustria',sans-serif;
@@ -94,18 +140,19 @@ h2 {
     text-decoration: underline;
 }
 
-#board-image {
+#guide-image-container {
     
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    
-    transform: scale(0.75);
+    max-width: 65%;
     border: 6px solid black;
-    
 }
 
-
+#guide-image {
+    width: 100%;
+    height: 100%;
+}
 
 
 footer {
@@ -379,8 +426,10 @@ footer {
 
     .how-to-play {
         font-size: 12px;
-        width: 130px;
+        width: 160px;
         height: 45px;
+        justify-content: center;
+        align-items: center;
     }
 
     .gamepage-buttons {
@@ -416,4 +465,24 @@ footer {
         font-weight: bold;
         color: black;
     }
+
+    #homepage-rules {
+    
+    flex-direction: column;
+    align-items: center;
+    
+}
+#guide-image-container {
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    border: 6px solid black;
+}
+
+#guide-image {
+    width: 100%;
+    height: 100%;
+}
 }
