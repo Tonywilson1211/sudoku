@@ -360,4 +360,13 @@ function endGame() {
         }
     }
 }        
-    
+
+let playBtn = document.querySelector('#how-to-play')
+function howToPlayBtn() {
+    playBtn.addEventListener('click', function() {
+       if (confirm('You are about to leave this page so any progress you have made will be lost')) {
+        location.assign("index.html")
+       }
+    })
+}
+howToPlayBtn()
