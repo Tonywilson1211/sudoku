@@ -4,17 +4,17 @@ let boards = [
       "685329174971485326234761859362574981549618732718293465823946517197852643456137298"
     ],
     [
-      "  9       4    6 758 31    15  4 36       4 8    9       75    3       1  2  3   ",
+      "  9       4    6 758 31    15  4 36   6   4 8    9       75    3       1  2  3   ",
       "619472583243985617587316924158247369926531478734698152891754236365829741472163895"
     ],
     [
-      " 1 5       97 42    5    7 5   3   7 6  2 41   8  5   1 4      2 3     9 7    8  ",
+      " 1 5       97 42    5    7 5   3   7 6  2 4    8  5   1 4      2 3     9 7    8  ",
       "712583694639714258845269173521436987367928415498175326184697532253841769976352841"
     ]
 ]
 
 //Looping through the board numbers
-let boxes = document.querySelectorAll('.box')
+
 
 function populateTiles(diffIndex) {
     let tiles = document.querySelectorAll('.tile')
@@ -40,16 +40,16 @@ populateTiles(0)
 let diff = document.querySelector('#diff')
 let diffIndex = 0
 let difficulties = ['Easy', 'Medium', 'Hard']
-let newGame = document.querySelector('#new-game')
 let difficultyText
+let newGame = document.querySelector('#new-game')
 
 function switchDifficulty () {
     diffIndex = (diffIndex+1) % 3
     difficultyText = difficulties[diffIndex]
     diff.innerHTML = difficultyText
     populateTiles(diffIndex)
-    memory = []
-    future = []
+    memory = [] 
+    future = [] 
 }
 
 diff.addEventListener('click', function() {
@@ -57,11 +57,8 @@ diff.addEventListener('click', function() {
         switchDifficulty()
         errorReset()
         timerReset()
-        newGame()
         endGame()
-    } else {
-        switchDifficulty()
-    } 
+    }
 })
 
 newGame.addEventListener('click', function() {
@@ -69,10 +66,9 @@ newGame.addEventListener('click', function() {
         populateTiles(diffIndex)
         errorReset()
         timerReset()
-        newGame()
         endGame()
-    } else {
-        populateTiles(diffIndex)
+        memory = []
+        future = []
     } 
 })
 
@@ -147,6 +143,9 @@ let tiles = document.querySelectorAll('.tile')
 
 tiles.forEach(function(tile) {
     tile.addEventListener('click', function(event) {
+        if (isPaused) {
+            return
+        }
          if (!this.querySelector('span').classList.contains('preset')) {
             if (!noting) {
                 if (chosen != null) {

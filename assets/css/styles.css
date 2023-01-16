@@ -63,7 +63,7 @@ p {
 .homepage-buttons {
     background-color: #721200;
     border-radius: 10%;
-    margin: 40px auto;
+    
     width: 150px;
     cursor: pointer;
     color: #ffffff;
@@ -131,19 +131,23 @@ p {
 }
 
 
-#homepage-rules li, #tutorial {
+#homepage-rules li {
     font-family: 'lustria',sans-serif;
     font-weight: bold;
     padding: 8px;
     color: black;
 }
 
-#tutorial:hover {
-    color: #721200;
+#tutorial {
+    font-family: 'lustria',sans-serif;
+    font-weight: bold;
+    padding: 8px;
+    color: red;
     text-decoration: underline;
 }
 
-#tutorial {
+#tutorial:hover {
+    color: green;
     text-decoration: underline;
 }
 
