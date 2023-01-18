@@ -103,56 +103,57 @@ let boards = [
   */
   
   let memory = []
-let errors = 0
-let errorCounter = document.querySelector('#error > span')
-let tiles = document.querySelectorAll('.tile')
-
-tiles.forEach(function(tile) {
-    tile.addEventListener('click', function(event) {
-      if (isPaused) {
-        return
-        }
-         if (!this.querySelector('span').classList.contains('preset')) {
-            if (!noting) {
-                if (chosen != null) {
-                    let prev = this.querySelector('span').innerHTML
-                    let id = this.id
-                    memory.push({id, prev, chosen})
-                    this.querySelector('span').innerHTML = chosen
-                    endGame()
-                    future = []
-                    let span2 = this.querySelector('span:nth-child(2)')
-                    span2.innerHTML = ''
-                    let index = parseInt(this.id.substring(1))
-                    let expected = boards[diffIndex][1][index]
-                    if (chosen != expected) {
-                        this.classList.add('incorrect')
-                        errors += 1 
-                        errorCounter.innerHTML = errors
-                    }
-                }
-            } else {
-                let span2 = this.querySelector('span:nth-child(2)')
-                let existing = span2.querySelector(`.n${chosen}`)
-                if (!existing) {
-                    let div = document.createElement('div') 
-                    div.className = `note n${chosen}`
-                    div.innerHTML = chosen
-                    span2.appendChild(div)
-                    let numbers = [1,2,3,4,5,6,7,8,9]
-                    numbers.forEach(function(n) {
-                        let note = span2.querySelector(`.note.n${n}`)
-                        if (note) {
-                            span2.appendChild(note)
-                        }
-                    })
-                } else {
-                    existing.remove()
-                }
-            }
-        }
-    })
-})
+  let errors = 0
+  let errorCounter = document.querySelector('#error > span')
+  let tiles = document.querySelectorAll('.tile')
+  
+  tiles.forEach(function(tile) {
+      tile.addEventListener('click', function(event) {
+        if (isPaused) {
+          return
+          }
+           if (!this.querySelector('span').classList.contains('preset')) {
+              if (!noting) {
+                  if (chosen != null) {
+                      let prev = this.querySelector('span').innerHTML
+                      let id = this.id
+                      memory.push({id, prev, chosen})
+                      this.querySelector('span').innerHTML = chosen
+                      endGame()
+                      future = []
+                      let span2 = this.querySelector('span:nth-child(2)')
+                      span2.innerHTML = ''
+                      let index = parseInt(this.id.substring(1))
+                      let expected = boards[diffIndex][1][index]
+                      if (chosen != expected) {
+                          this.classList.add('incorrect')
+                          errors += 1 
+                          errorCounter.innerHTML = errors
+                      }
+                  }
+              } else {
+                  let span2 = this.querySelector('span:nth-child(2)')
+                  let existing = span2.querySelector(`.n${chosen}`)
+                  if (!existing) {
+                      let div = document.createElement('div') 
+                      div.className = `note n${chosen}`
+                      div.innerHTML = chosen
+                      span2.appendChild(div)
+                      let numbers = [1,2,3,4,5,6,7,8,9]
+                      numbers.forEach(function(n) {
+                          let note = span2.querySelector(`.note.n${n}`)
+                          if (note) {
+                              span2.appendChild(note)
+                          }
+                      })
+                  } else {
+                      existing.remove()
+                  }
+              }
+          }
+      })
+  })
+  
 
 ///////////////////////////////////////////
   
@@ -176,10 +177,10 @@ tiles.forEach(function(tile) {
   let undo = document.querySelector('#undo')
   
   undo.addEventListener('click', function(){
+    if (isPaused) {
+        return
+    }
       let prev_action = memory.splice(-1)[0]
-      if (isPaused) {
-          return;
-      }
       if (prev_action) {
           future.push(prev_action)
           let {id, prev} = prev_action
@@ -193,10 +194,10 @@ tiles.forEach(function(tile) {
   // Redo button
   let redo = document.querySelector('#redo')
   redo.addEventListener('click', function(){
-      let prev_action = future.splice(-1)[0]
       if (isPaused) {
           return;
       }
+      let prev_action = future.splice(-1)[0]
       if (prev_action) {
           memory.push(prev_action)
           let {id, chosen} = prev_action
