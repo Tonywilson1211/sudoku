@@ -23,8 +23,8 @@ let boards = [
   // When called, this Function allows for text and the corresponding board layout to change when user clicks on the difficulty button. 
 
   let diffIndex = 0
+  let diff = document.querySelector('#diff')
   function switchDifficulty () {
-    let diff = document.querySelector('#diff')
     let difficulties = ['Easy', 'Medium', 'Hard']
     let difficultyText
     diffIndex = (diffIndex+1) % 3
@@ -83,78 +83,90 @@ let boards = [
   }
   })
   
-  ////////////////////////////////////
+////////////////////////////////////
   
-  //Tile click event listeners.
-  
-  /* 
-  The forEach method is iterating through each tile adding a click event. 
-  When a tile is clicked, the code checks if the tile  does not contain a preset class in its inner span element.
-  If true, the code then checks if noting is false.
-  If true, code checks if chosen is not null. 
-  If conditions are met, code then does the following:
-  1. Stores the previous innerHTML span element in memory array
-  2. Sets the tile to chosen 
-  3. Calls the endGame function (which checks to see if conditions have been met for ending the game)
-  4. Removes any notes that might have been present in the tile
-  5. Checks if the user entered the correct number into the tile. If not, the error counter increments by 1. 
-  If noting is true, div element with class note n${chosen} and append the div element to the second inner span element of tile, 
-  and append the note to the inner span element in numerical order. If there is already a note with the same number, it will remove it.
-  */
-  
-  let memory = []
-  let errors = 0
-  let errorCounter = document.querySelector('#error > span')
-  let tiles = document.querySelectorAll('.tile')
-  
-  tiles.forEach(function(tile) {
-      tile.addEventListener('click', function(event) {
-        if (isPaused) {
-          return
-          }
-           if (!this.querySelector('span').classList.contains('preset')) {
-              if (!noting) {
-                  if (chosen != null) {
-                      let prev = this.querySelector('span').innerHTML
-                      let id = this.id
-                      memory.push({id, prev, chosen})
-                      this.querySelector('span').innerHTML = chosen
-                      endGame()
-                      future = []
-                      let span2 = this.querySelector('span:nth-child(2)')
-                      span2.innerHTML = ''
-                      let index = parseInt(this.id.substring(1))
-                      let expected = boards[diffIndex][1][index]
-                      if (chosen != expected) {
-                          this.classList.add('incorrect')
-                          errors += 1 
-                          errorCounter.innerHTML = errors
-                      }
-                  }
-              } else {
-                  let span2 = this.querySelector('span:nth-child(2)')
-                  let existing = span2.querySelector(`.n${chosen}`)
-                  if (!existing) {
-                      let div = document.createElement('div') 
-                      div.className = `note n${chosen}`
-                      div.innerHTML = chosen
-                      span2.appendChild(div)
-                      let numbers = [1,2,3,4,5,6,7,8,9]
-                      numbers.forEach(function(n) {
-                          let note = span2.querySelector(`.note.n${n}`)
-                          if (note) {
-                              span2.appendChild(note)
-                          }
-                      })
-                  } else {
-                      existing.remove()
-                  }
-              }
-          }
-      })
-  })
-  
+//Tile click event listeners.
 
+let memory = []
+let errors = 0
+let errorCounter = document.querySelector('#error > span')
+let tiles = document.querySelectorAll('.tile')
+
+
+//tileClick function checks a series of conditions to prevent certain actions from taking place.
+function tileClick(event) {
+    let tile = event.currentTarget
+    let span = tile.querySelector('span')
+    let span2 = tile.querySelector('span:nth-child(2)')
+    switch(true) {
+        // If game is paused no values can be entered onto the board
+        case isPaused:
+            return
+        // If a tile contains a 'preset' number then user cannot overwrite it or insert a note
+        case span.classList.contains('preset'):
+            return
+        // If notes has been turned on then note function is triggered i.e allows notes to be entered onto board
+        case noting:
+            noteMode(span2)
+            return
+        // If user has no number selected, this prohibits the user from replacing a number on the board with an empty value
+        case chosen === null:
+            return
+        // If all conditions are met, number is entered into the board and stored in game memory should undo/redo functions be used by user
+        default:
+            gameMemory(span, tile)
+            
+    }
+    
+}
+// noteMode function allows the user to enter notes onto the board to aid them to complete the game
+function noteMode(span2) {
+  let existing = span2.querySelector(`.n${chosen}`)
+  // If a note is not already present in a tile then the number chosen by the user is entered into the board in note format.
+  if (!existing) {
+    let div = document.createElement('div')
+    div.className = `note n${chosen}`
+    div.innerHTML = chosen
+    span2.appendChild(div)
+    let numbers = [1,2,3,4,5,6,7,8,9]
+    // If a note doesn't already exist then the number is entered into the board. If there number is already present, it is removed.
+    numbers.forEach(function(n) {
+      let note = span2.querySelector(`.note.n${n}`)
+      if (note) {
+        span2.appendChild(note)
+      }
+    })
+    } else {
+        existing.remove()
+    }
+}
+
+
+
+
+// gameMemory function records the number entered onto the board by the user for use with undo and redo functions.
+function gameMemory(span, tile) {
+  let prev = span.innerHTML
+  let id = tile.id
+  memory.push({id, prev, chosen})
+  span.innerHTML = chosen
+  // checks to see if end game conditions have been met
+  endGame();
+  let span2 = tile.querySelector('span:nth-child(2)')
+  span2.innerHTML = ''
+  let index = parseInt(tile.id.substring(1))
+  let expected = boards[diffIndex][1][index]
+  if (chosen != expected) {
+    tile.classList.add('incorrect')
+    errors += 1;
+    errorCounter.innerHTML = errors
+  }
+}
+
+tiles.forEach(function(tile) {
+  tile.addEventListener('click', tileClick);
+});
+  
 ///////////////////////////////////////////
   
   //Reset Notes when new game starts
