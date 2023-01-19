@@ -46,7 +46,6 @@ let boards = [
         let number = boards[diffIndex][0][n]
         tile.innerHTML = number
         // Add any tiles with no value to a preset class. Class will be called upon in tile event listeners. 
-        
         if (number != ' '){
             tile.classList.add('preset')
         } else {
@@ -120,11 +119,27 @@ function tileClick(event) {
             break
         // If all conditions are met, number is entered into the board and stored in game memory should undo/redo functions be used by user
         default:
-            gameMemory(span, tile)
-            
+            gameMemory(span, tile)   
     }
-    
 }
+
+
+
+function tileValue() {
+    let tile = tiles.querySelector('.tile')
+    let span = tiles.querySelector('.tile span')
+    if (span.innerHTML != ' ') {
+        tile.classList.add('present')
+        return true;
+    } else {
+        tile.classList.remove('present')  
+        return false;
+    } 
+}
+
+    
+
+
 // noteMode function allows the user to enter notes onto the board to aid them to complete the game
 function noteMode(span2) {
   let existing = span2.querySelector(`.n${chosen}`)
@@ -144,7 +159,7 @@ function noteMode(span2) {
     })
     } else {
         existing.remove()
-    }
+    } 
 }
 
 
@@ -157,22 +172,22 @@ function gameMemory(span, tile) {
   memory.push({id, prev, chosen})
   span.innerHTML = chosen
   // checks to see if end game conditions have been met
-  endGame();
+  endGame()
   let span2 = tile.querySelector('span:nth-child(2)')
   span2.innerHTML = ''
   let index = parseInt(tile.id.substring(1))
   let expected = boards[diffIndex][1][index]
   if (chosen != expected) {
     tile.classList.add('incorrect')
-    errors += 1;
+    errors += 1
     errorCounter.innerHTML = errors
   }
 }
 
 tiles.forEach(function(tile) {
-  tile.addEventListener('click', tileClick);
+  tile.addEventListener('click', tileClick)
 
-});
+})
   
 ///////////////////////////////////////////
   
@@ -214,7 +229,7 @@ tiles.forEach(function(tile) {
   let redo = document.querySelector('#redo')
   redo.addEventListener('click', function(){
       if (isPaused) {
-          return;
+          return
       }
       let prev_action = future.splice(-1)[0]
       if (prev_action) {
@@ -231,7 +246,7 @@ tiles.forEach(function(tile) {
   
   // Timer
   let time = document.querySelector('#timer > span')
-  let timer = document.querySelector('#timer');
+  let timer = document.querySelector('#timer')
   let seconds = 0
   let minutes = 0
   let timing = 0
@@ -250,32 +265,32 @@ tiles.forEach(function(tile) {
   
   // Timer Reset
   function timerReset() {
-      seconds = -1;
-      minutes = 0;
-      time.innerHTML = `0:00`;
+      seconds = -1
+      minutes = 0
+      time.innerHTML = `0:00`
   }
   
   timer.addEventListener("click", function () {
       if (timing) {
-          clearInterval(timing);
-          timing = null;
-          time.innerHTML = "||";
+          clearInterval(timing)
+          timing = null
+          time.innerHTML = "||"
       } else {
-          timer_increment();
+          timer_increment()
       }
   })
   
   // Pause
-  let isPaused = false;
+  let isPaused = false
   
   timer.addEventListener('click', function() {
-      isPaused = !isPaused;
+      isPaused = !isPaused
       if(isPaused == true) {
           alert('The game is paused. You will not be able to place numbers on the board or use the undo/redo buttons')
       } if (isPaused == false){
           alert('The game is now unpaused')
       }
-  });
+  })
   
   ///////////////////////////////////////////
   
@@ -286,36 +301,36 @@ let reset = null
 let noting = false
 
 function handleDigitClick(event) {
-    if (isPaused) return;
+    if (isPaused) return
     if (reset === event.currentTarget) {
-        resetDigit();
+        resetDigit()
     } else {
-        resetDigit();
-        chosen = event.currentTarget.innerHTML;
-        event.currentTarget.style.background = noting ? 'skyblue' : 'green';
-        reset = event.currentTarget;
+        resetDigit()
+        chosen = event.currentTarget.innerHTML
+        event.currentTarget.style.background = noting ? 'skyblue' : 'green'
+        reset = event.currentTarget
     }
 }
 
 function resetDigit() {
     if (reset) {
-        reset.style.background = '#721200';
-        reset = null;
-        chosen = null;
+        reset.style.background = '#721200'
+        reset = null
+        chosen = null
     }
 }
 
 digits.forEach(digit => {
-    digit.addEventListener('click', handleDigitClick);
-});
+    digit.addEventListener('click', handleDigitClick)
+})
 
 let notes = document.querySelector('#notes')
 
 notes.addEventListener('click', function(){
-    noting = !noting;
-    notes.classList.toggle('active');
+    noting = !noting
+    notes.classList.toggle('active')
     if (!noting) {
-        resetDigit();
+        resetDigit()
     }
 })
 
@@ -381,8 +396,8 @@ notes.addEventListener('click', function(){
   
   //Errors
   function errorReset() {
-    errors = 0;
-    document.querySelector("#error > span").innerHTML = errors;
+    errors = 0
+    document.querySelector("#error > span").innerHTML = errors
   }
 
   /*function errorCounter() {
@@ -409,7 +424,7 @@ notes.addEventListener('click', function(){
         let expected = boards[diffIndex][1][index]
         let value = tile.querySelector('span').innerHTML
         if (value === ' ') {
-            allFilled = false;
+            allFilled = false
         } else {
             if (value !== expected) {
                 allCorrect = false
