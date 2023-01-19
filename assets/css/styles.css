@@ -311,6 +311,10 @@ footer {
     justify-content: center;
 }
 
+.selected{
+    background:green;
+}
+
 #notes.active {
     background-color: skyblue;
 }

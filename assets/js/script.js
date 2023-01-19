@@ -46,9 +46,11 @@ let boards = [
         let number = boards[diffIndex][0][n]
         tile.innerHTML = number
         // Add any tiles with no value to a preset class. Class will be called upon in tile event listeners. 
+        
         if (number != ' '){
             tile.classList.add('preset')
         } else {
+            // When a new game begins the tile is checked again and preset removed if tile has no number.
             tile.classList.remove('preset')  
         } 
     })
@@ -98,20 +100,24 @@ function tileClick(event) {
     let tile = event.currentTarget
     let span = tile.querySelector('span')
     let span2 = tile.querySelector('span:nth-child(2)')
+    
     switch(true) {
         // If game is paused no values can be entered onto the board
         case isPaused:
-            return
+            break
         // If a tile contains a 'preset' number then user cannot overwrite it or insert a note
         case span.classList.contains('preset'):
-            return
+            break
         // If notes has been turned on then note function is triggered i.e allows notes to be entered onto board
         case noting:
             noteMode(span2)
-            return
-        // If user has no number selected, this prohibits the user from replacing a number on the board with an empty value
+            break
+        // If user has no number selected this then prohibits the user from replacing a number on the board with an empty value
         case chosen === null:
-            return
+            break
+        // This prohibits duplicate entries into a tile. 
+        case span.innerHTML === chosen:
+            break
         // If all conditions are met, number is entered into the board and stored in game memory should undo/redo functions be used by user
         default:
             gameMemory(span, tile)
@@ -165,6 +171,7 @@ function gameMemory(span, tile) {
 
 tiles.forEach(function(tile) {
   tile.addEventListener('click', tileClick);
+
 });
   
 ///////////////////////////////////////////
@@ -274,60 +281,44 @@ tiles.forEach(function(tile) {
   
   // Digit buttons 
   let digits = document.querySelectorAll('#digits > .digit-btn:nth-child(n+2)')
-  let chosen = null
-  let reset = null
-  
-  digits.forEach(function(digit) {
-    digit.addEventListener('click', function() {
-        if (isPaused) {
-            return;
-        }
-        if (noting == false) {
-            if (reset == this) {
-                this.style.background = '#721200'
-                chosen = null
-                reset = null
-            } else {
-                if (reset) {
-                    reset.style.background = '#721200'
-                }
-                chosen = this.innerHTML
-                this.style.background = 'green'
-                reset = this
-            }
-        } else {
-            if (reset == this) {
-                this.style.background = '#721200'
-                reset = null
-                chosen = null
-            } else {
-                if (reset) {
-                    reset.style.background = '#721200'
-                }
-                chosen = this.innerHTML
-                this.style.background = 'skyblue'
-                reset = this
-            }
-        }
-    })});
-  
-  // Note buttons
-  let noting = false
-  let notes = document.querySelector('#notes')
-  
-  notes.addEventListener('click', function(){
-      if (noting == false) {
-          noting = true
-          notes.classList.add('active')
-      } else {
-          noting = false 
-          notes.classList.remove('active')
-          if (reset) {
-              reset.style.background = '#721200'
-              reset = null
-          }
-      }
-  })
+let chosen = null
+let reset = null
+let noting = false
+
+function handleDigitClick(event) {
+    if (isPaused) return;
+    if (reset === event.currentTarget) {
+        resetDigit();
+    } else {
+        resetDigit();
+        chosen = event.currentTarget.innerHTML;
+        event.currentTarget.style.background = noting ? 'skyblue' : 'green';
+        reset = event.currentTarget;
+    }
+}
+
+function resetDigit() {
+    if (reset) {
+        reset.style.background = '#721200';
+        reset = null;
+        chosen = null;
+    }
+}
+
+digits.forEach(digit => {
+    digit.addEventListener('click', handleDigitClick);
+});
+
+let notes = document.querySelector('#notes')
+
+notes.addEventListener('click', function(){
+    noting = !noting;
+    notes.classList.toggle('active');
+    if (!noting) {
+        resetDigit();
+    }
+})
+
   
   ///////////////////////////////////////////
   
