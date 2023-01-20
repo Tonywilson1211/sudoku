@@ -1,108 +1,88 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Sudoku - A Game Made with HTML, CSS & JavaScript.
 
-Welcome Tonywilson1211,
+# Introduction
+Sudoku is a well know and popular puzzle game which challenges a user's ability to apply logic and ascertain the correct combinatorial number placement. Whilst all Sudoku games are the same when comparing the rules, there are many different versions where users have different features available to them. A basic version would simply supply the board in which to solve the puzzle whereas this version is more advanced and aims to provide the user with many features such as ability to track time taken to solve the puzzle, pause the game, undo or redo actions taken, use notes to aid the completion of the puzzle, choose to hear music whilst they play and auto solve the puzzle should the user wish. To add additional challenge the user can select different difficulties and the number of errors made is recorded. When the game is complete the user is either congratulated one completing the puzzle correctly and presented with confirmation of the difficulty setting chosen, the time taken and the number of errors made. If the user has made an error at the stage of completion they are presented with a commiseration message.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+[Live Website Here](https://tonywilson1211.github.io/P2_Sudoku/)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+<p align="center"><img src="assets/images/readme/devices.jpg" alt="sudoku webpage on multiple devices"></p>
 
-## Gitpod Reminders
+# README Contents
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+* [Introduction](#introduction)
+* [User Experience (UX)](#user-experience)
+    * [User stories](#user-stories)
+* [Design](#design)
+    * [Initial Design - Wireframe](#initial-concept---wire-frames)
+    * [Website Structure](#website-structure)
+    * [Colour Scheme](#colour-scheme)
+    * [Typography](#typography)
+    * [Imagery](#imagery)
+    * [Google Maps](#google-maps)
+    * [Interactive Links](#interactive-links) 
+* [Existing Features](#existing-features)
+    * [Landing Page](#landing-page)
+    * [Navigation Bar](#navigation-bar)
+    * [About Section](#about-section)
+    * [Services Section](#services-section)
+    * [Gallery Section](#gallery-section)
+    * [Contact Us Section](#contact-us-section)
+    * [Favicon](#favicon)
+    * [Thank You Page](#thank-you-page)
+    * [Footer Section](#footer-section)
+    * [404 Error](#404-page)
+* [Future Features](#future-features)
+* [Technologies Used](#technologies-used)
+* [Testing](#testing)
+    * [Responsiveness](#responsiveness)
+    * [Validators](#validators)
+    * [Lighthouse](#lighthouse)
+    * [Functional Testing](#functional-testing)
+    * [Bugs](#bugs)
+    * [Website Development Issues](#website-development-issues)
+* [Deployment](#deployment-this-project)
+    * [Deployment This Project](#deployment-this-project)
+    * [Forking This Project](#forking-this-project)
+    * [Cloning This Project](#cloning-this-project)
+* [Credits](#credits)
+* [Content](#content)
 
-`python3 -m http.server`
+## User Experience
 
-A blue button should appear to click: _Make Public_,
+ ### User Stories
 
-Another blue button should appear to click: _Open Browser_.
+* As a games creator, I want to:
+  
+1. Build a game that is visually appealing, offers solid functionality, a good range of features and easy to understand
+2. Ensure the website is easy to navigate and striaght forward in design.
+   
+* As a new visitor, I want to:
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+1. Understand the main purpose of the site.
+2. Understand the rules of the game.
+3. Understand the features the game offers. 
+   
+* As a returning visitor, I want to:
 
-A blue button should appear to click: _Make Public_,
+1. Quickly start a new game.
+2. Change difficulty setting as I get more practised at the game. 
 
-Another blue button should appear to click: _Open Browser_.
+## Design
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Initial Concept - Wire Frames
+* The majority of the initial design was followed with only a few alternations made such as giving the digit selection buttons and note mode buttons a different coloured background when selected.
+![Home Page](assets/images/readme/home.jpg)<br>
+![Home Page](assets/images/readme/game.jpg)<br>
+![Home Page](assets/images/readme/error.jpg)<br>
 
-To log into the Heroku toolbelt CLI:
+### Website Structure
+* Sudoku website consists of 2 main pages: Home Page and Game Page.
+* One additional page exists, a 404 Error Page.
+* The Home Page has 4 sections: (1) Title and Game Start button, (2) Rules, (3) image highlting features and the function, (4) buttons to Start Game and Home (returns to top of page). 
+* The Game Page is broken down into sections for different button placement surrounding the center puzzle board.
+* Home Page and Game Page are accessible to each other. 404 page is accessed should the url not be recognised.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+### Colour Scheme
+* There are three main colours used throughout the website: (1) dark red (#721200), (2) beige (#d8cdb7), (3) dark beige (#bdb29f). 4 supplementary colours used to provide contrast are: (1)'white', (2)'green' and (3)'skyblue' and (4)'black'.<br>
+* All colours were picked to either resemble or work in contrast to the background image.
+* The background image provides a light wood effect which acts as a more interesting background than a block colour, but does not distract the user from the game. <br>

@@ -293,9 +293,14 @@ tiles.forEach(function(tile) {
   })
   
   ///////////////////////////////////////////
+
+
+
+
+  //////////////////////////////////////////
   
-  // Digit buttons 
-  let digits = document.querySelectorAll('#digits > .digit-btn:nth-child(n+2)')
+// Digit buttons 
+let digits = document.querySelectorAll('#digits > .digit-btn:nth-child(n+2)')
 let chosen = null
 let reset = null
 let noting = false
@@ -307,7 +312,7 @@ function handleDigitClick(event) {
     } else {
         resetDigit()
         chosen = event.currentTarget.innerHTML
-        event.currentTarget.style.background = noting ? 'skyblue' : 'green'
+        event.currentTarget.style.background = 'green'
         reset = event.currentTarget
     }
 }
@@ -318,7 +323,8 @@ function resetDigit() {
         reset = null
         chosen = null
     }
-}
+}    
+
 
 digits.forEach(digit => {
     digit.addEventListener('click', handleDigitClick)
@@ -329,9 +335,6 @@ let notes = document.querySelector('#notes')
 notes.addEventListener('click', function(){
     noting = !noting
     notes.classList.toggle('active')
-    if (!noting) {
-        resetDigit()
-    }
 })
 
   
