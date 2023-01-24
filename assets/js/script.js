@@ -95,12 +95,33 @@ let tiles = document.querySelectorAll('.tile')
 
 
 //tileClick function checks a series of conditions to prevent certain actions from taking place.
-function tileClick(event) {
-    let tile = event.currentTarget
-    let span = tile.querySelector('span')
-    let span2 = tile.querySelector('span:nth-child(2)')
+
     
-    switch(true) {
+    function tileClick(event) {
+        let tile = event.currentTarget
+        let span = tile.querySelector('span')
+        let span2 = tile.querySelector('span:nth-child(2)')
+    
+        if (isPaused || (span.classList.contains('preset') || chosen === null || span.innerHTML === chosen)) {
+            return;
+        }
+    
+        if (noting) {
+            noteMode(span2);
+        } else {
+            gameMemory(span, tile);
+        }
+    }
+
+
+
+
+
+
+
+
+
+    /*switch(true) {
         // If game is paused no values can be entered onto the board
         case isPaused:
             break
@@ -121,23 +142,10 @@ function tileClick(event) {
         default:
             gameMemory(span, tile)   
     }
-}
+}*/
 
 
 
-function tileValue() {
-    let tile = tiles.querySelector('.tile')
-    let span = tiles.querySelector('.tile span')
-    if (span.innerHTML != ' ') {
-        tile.classList.add('present')
-        return true;
-    } else {
-        tile.classList.remove('present')  
-        return false;
-    } 
-}
-
-    
 
 
 // noteMode function allows the user to enter notes onto the board to aid them to complete the game

@@ -194,6 +194,8 @@ Some example user stories which have affected the design:
   - Free software on Windows, allowing image editing and creation.
 * [JSHint](https://jshint.com/)
   - A static code analysis tool for JavaScript. [Results here](#jshint).
+
+  
 - *[Balsamiq](https://balsamiq.com/)*
   - Balsamiq was used to create [wireframes](./readme-content/wireframes.md)
   for the project.
