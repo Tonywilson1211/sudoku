@@ -194,34 +194,24 @@ Some example user stories which have affected the design:
   - Free software on Windows, allowing image editing and creation.
 * [JSHint](https://jshint.com/)
   - A static code analysis tool for JavaScript. [Results here](#jshint).
-
-  
-- *[Balsamiq](https://balsamiq.com/)*
-  - Balsamiq was used to create [wireframes](./readme-content/wireframes.md)
-  for the project.
-- *[CloudConvert](https://cloudconvert.com/)*
+* [CloudConvert](https://cloudconvert.com/)
   - All images within the project have been processed through their free file
   converter service
-- *[Font Awesome](https://fontawesome.com/)*
+* [Font Awesome](https://fontawesome.com/)
   - The project uses icons from Font Awesome version 5.
-- *[Coolors.co](https://coolors.co)*
-  - The colour scheme, and subsequent shades and tones, were generated via this
-  application.
-- *[Chrome DevTools](https://developer.chrome.com/docs/devtools/)*
+* [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
   - Once the website was made to a basic deployment level, this extension
   featured heavily as I modified sizings and spacings.
-- *[Google Fonts](https://fonts.google.com/)*
+* [Google Fonts](https://fonts.google.com/)
   - The fonts used in the website are imported from Google Fonts.
-- *[Favicon Converter](https://favicon.io/favicon-converter/)*
+* [Favicon Converter](https://favicon.io/favicon-converter/)
   - A service to convert images to favicons
-- *[Multi Device Mockup Generator](https://techsini.com/multi-mockup/index.php)*
+* [Multi Device Mockup Generator](https://techsini.com/multi-mockup/index.php)
   - The image at the top of this document was created using a free service
-  provided by TechSini.&#8203;com
-- *[WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)*
-  - A contrast checker to test WCAG levels.
-- *[Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/)*
+  provided by TechSini.
+* [Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/)
   - A tool to check for errors with accessibility. [Results here](#wave).
-- *[W3C Markup Validation Service](validator.w3.org)*
+* [W3C Markup Validation Service](validator.w3.org)
   - A service to check the HTML and CSS files for errors. During
   development, I copied the entire text from the files and ran them through the
   direct input method. Upon completion, I ran the deployed site through the

@@ -42,6 +42,13 @@ h3 {
     text-decoration: underline;
 }
 
+#footer-text {
+    font-family: 'lustria', sans-serif;
+    color: #721200;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
 p {
     font-family: 'lustria', sans-serif;
     font-weight: bold;
@@ -168,15 +175,15 @@ p {
 
 footer {
     margin-top: 100px;
-    background-color: black;
+    background-color: white;
     width: 100%;
-    color: white;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center; 
     position: fixed;
     bottom: 0;
+    text-decoration: none;
     
 }
 
