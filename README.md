@@ -306,3 +306,4 @@ Some example user stories which have affected the design:
   available have allowed me to customize my workspace and become more
   efficient.
 
+![testing](assets/images/readme/testing.jpg)
