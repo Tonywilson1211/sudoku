@@ -195,7 +195,6 @@ Some example user stories which have affected the design:
 * The design considerations ensure an attractive application that is more appealing than other versions I found while researching. The photographed wood effect means the game board looks authentic.
 * The button layout and placement are easily identifable.
 
-  ![Wooden game board](assets/images/readme/background.jpg)
   ![Button-Placements](assets/images/readme/button-board.jpg)
 
 
