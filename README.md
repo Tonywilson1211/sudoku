@@ -98,7 +98,7 @@ Some example user stories which have affected the design:
 * The index page is the page containing details on how to play and has a link at both the top and bottom of the page taking the user to the game.
 * The game is available to play with default settings on the game page. A user is able to play as soon as they click on the 'Start Game' button.
 
-    * Start Game Button immdiately seen on index page<br>
+    * Start Game Button immdiately available on the index page<br>
     ![Start Game Button](assets/images/readme/start.jpg)
 
 
@@ -141,12 +141,44 @@ Some example user stories which have affected the design:
 
         "As a person who has played Sudoku before, I want more functions available whilst i play the game."
 
-* There are different functions and features available to the user.
-* Timer: A stopwatch informs the user how much time has passed during their game. The timer begins when the page is loaded and can be paused at anytime. It is reset when a new game begins.
-* Undo/Redo: An undo button removes any numbers the user has entered into the board in the reverse order they were entered. The Redo button can then re-enter any numbers that had been removed with the undo button. This does not apply to notes by design.
-* Notes: Notes can be entered into each tile on the board in order to help the user narrow down the possible solutions to each tile. If the wrong number is entered into a tile but is in notes form, it is not counted as an error.
-* Auto-Solve: Should the user desire to end the game but see the correct solution for the puzzle, they can click on 'auto-solve'
-* Music: Music is available to be played to add ambiance. 
+* There are multiple different functions and features available to the user.
+
+1. Timer
+    * A stopwatch informs the user how much time has passed during their game. The timer begins when the page is loaded and can be paused at anytime. It is reset when a new game begins.<br>
+    * When clicked, the timer will pause and the icon will change.
+    * The timer serves to inform the user the amount that it has taken in order to complete the puzzle. This time becomes a target for the user to beat next time they play.
+
+    ![Timer](assets/images/readme/button-timer.jpg)
+    ![Puase](assets/images/readme/button-gamepause.jpg)
+
+2. Undo/Redo
+
+    * An Undo button removes any numbers the user has entered into the board in the reverse order they were entered. 
+    * The Redo button can then re-enter any numbers that had been removed with the undo button. This does not apply to notes by design.
+    * The buttons have been added to provide a good user experience by making adjustments to the board quick and easy.<br>
+
+    ![Undo/Redo](assets/images/readme/button-undo.jpg)
+    ![Undo/Redo](assets/images/readme/button-redo.jpg)
+
+3. Notes 
+    * Notes can be entered into each tile on the board in order to help the user narrow down the possible solutions to each tile. 
+    * When notes mode is active, the notes icon has a skyblue background.
+    * If the wrong number is entered into a tile but is in notes form, it is not counted as an error.<br>
+
+    ![Notes](assets/images/readme/button-notes.jpg)
+
+4. Auto-Solve 
+    * Should the user desire to end the game but see the correct solution for the puzzle, they can click on 'auto-solve'<br>
+
+    ![Auto-Solve](assets/images/readme/button-solve.jpg)
+
+5. Music 
+    * Music is available to be played to add ambiance.<br>
+    * When music is not playing, the button says 'Play Music'
+    * When music is playing, the button says 'Pause Music'
+
+    ![Music](assets/images/readme/button-music.jpg)
+    ![Pause-Music](assets/images/readme/button-musicpause.jpg)
 
 
 ### Click Controls
