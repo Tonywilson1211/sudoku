@@ -196,6 +196,7 @@ Some example user stories which have affected the design:
 * The button layout and placement are easily identifable.
 
   ![Wooden game board](assets/images/readme/background.jpg)
+  ![Button-Placements](assets/images/readme/button-board.jpg)
 
 
 ### User Error Preventative JavaScript
