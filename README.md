@@ -18,17 +18,15 @@ Sudoku is a well known and popular puzzle game where a user is challenged correc
     * [Colour Scheme](#colour-scheme)
     * [Typography](#typography)
     * [Imagery](#imagery)
-    * [Interactive Links](#interactive-links) 
 * [Existing Features](#existing-features)
-    * [Landing Page](#landing-page)
-    * [Navigation Bar](#navigation-bar)
-    * [About Section](#about-section)
-    * [Services Section](#services-section)
-    * [Gallery Section](#gallery-section)
-    * [Contact Us Section](#contact-us-section)
-    * [Favicon](#favicon)
-    * [Thank You Page](#thank-you-page)
-    * [Footer Section](#footer-section)
+    * [Simple and Fast Navigation](#simple-and-fast-navigation)
+    * [How To Play Guide](#how-to-play-guide)
+    * [Change Difficulty](#Change-Difficulty)
+    * [User Functionality](#user-functionality)
+    * [Click Controls](#click-controls)
+    * [Intuitive and Attractive Layout](#intuitive-and-attractive-layout)
+    * [User Error Preventative JavaScript](#user-error-preventative-javascript)
+    * [Feedback From Website to User](#feedback-from-website-to-user)
     * [404 Error](#404-page)
 * [Future Features](#future-features)
 * [Technologies Used](#technologies-used)
@@ -93,21 +91,23 @@ Some example user stories which have affected the design:
 
 ## Existing Features
 
-1. The index page is the page containing details on how to play and has a link at both the top and bottom of the page taking the user to the game. 
+### Simple and Fast Navigation 
 
         "As a person who enjoys Sudoku, I want to get straight into playing the game."
 
+* The index page is the page containing details on how to play and has a link at both the top and bottom of the page taking the user to the game.
 * The game is available to play with default settings on the game page. A user is able to play as soon as they click on the 'Start Game' button.
 
     * Start Game Button immdiately seen on index page<br>
     ![Start Game Button](assets/images/readme/start.jpg)
 
----
 
-2. Details of how to play and features available is available to be seen straight away.
+
+### How To Play Guide 
 
         "As a person who hasn't played before I want to know exactly how to play and what to expect."
 
+* Details of how to play and features available is available to be seen straight away.
 * The user is able to immediately see when loading the site the rules are available and present in a format that is quick and easy to understand.
 * An image of the game is displayed with annotations explaining each function available. 
 
@@ -116,59 +116,112 @@ Some example user stories which have affected the design:
     * Functions<br>
     ![Functions](assets/images/readme/functions.jpg)
 
----
 
-3. There is a way to change the difficulty, making it more of a challenge.
+
+### Change Difficulty
 
         "As a person that likes a challenge I would like the option of a more difficult game"
 
-* The user is able to change the difficulty setting to add additional challenge if desired.<br>
+* 3 difficulty options are available to the user: Easy, Medium, Hard.<br>
+* The user is able to change the difficulty at any point<br>
+* The button to change difficulty is placed next to the board so as to be easily found. 
 * At the end of the game, if completed correctly, the game will present the user with confirmation of the difficulty level they have completed, the time is has taken and the number of errors made. This allows the user to make a note of this information and 
   replay the same level with the intension of improving their score.
 * There is an option to use notes during the game to aid the user when filling in the correct answers. This is an optional feature which the user does not have to utilise should they wish to increase the challenge. 
 
     * Congratulations Message<br>
-    ![Congratulations Message](assets/images/readme/congrats.jpg)
+    ![Congratulations Message](assets/images/readme/message-win.jpg)
 
----
+    * Commiserations Message<br>
+    ![Commiserations Message](assets/images/readme/message-lose.jpg)
 
-4. There are different features available to the user.
+
+
+### User Functionality 
 
         "As a person who has played Sudoku before, I want more functions available whilst i play the game."
 
+* There are different functions and features available to the user.
 * Timer: A stopwatch informs the user how much time has passed during their game. The timer begins when the page is loaded and can be paused at anytime. It is reset when a new game begins.
 * Undo/Redo: An undo button removes any numbers the user has entered into the board in the reverse order they were entered. The Redo button can then re-enter any numbers that had been removed with the undo button. This does not apply to notes by design.
 * Notes: Notes can be entered into each tile on the board in order to help the user narrow down the possible solutions to each tile. If the wrong number is entered into a tile but is in notes form, it is not counted as an error.
 * Auto-Solve: Should the user desire to end the game but see the correct solution for the puzzle, they can click on 'auto-solve'
 * Music: Music is available to be played to add ambiance. 
 
----
 
-5. Click controls
+### Click Controls
 
         "...click rather than drag and drop..."
 
 * The interface of the application allows users to single tap or click, rather than relying on a drag effect, to make their selections.
 
----
 
-6. A clean and attractive design.
+### Intuitive and Attractive Layout
 
         "...it would be nice to see a little more style..."
 
 * The design considerations ensure an attractive application that is more appealing than other versions I found while researching. The photographed wood effect means the game board looks authentic.
+* The button layout and placement are easily identifable.
 
   ![Wooden game board](assets/images/readme/background.jpg)
 
----
 
-7. User error preventative JavaScript.
+### User Error Preventative JavaScript
 
-"...I don't want to get an error if i accidentially enter the same number more than once..."
+    "...I don't want to get an error if i accidentially enter the same number more than once..."
 
 * The JavaScript is written in a way that prevents users from accidentally entering the same number more than once.
 
----
+
+### Feedback From Website to User
+
+    "...I don't want to be confused or unsure how to interact with the game at any point..."
+
+* A large range of feedback messages to the user are prompted during various precise moments.
+
+#### Game Paused
+
+* A message will tell the user the game is paused and that they will not be able to interact with the board.<br>
+![ispaused](assets/images/readme/message-ispaused.jpg)
+
+* When the game is unpaused a confirmation message will appear.<br>
+![unpaused](assets/images/readme/message-unpaused.jpg)
+
+#### Game restart
+
+* During a game, if the user attempts to (1) change difficulty (2) restart the game (3) click on 'How To Play' button, the user is greeted with warning message and questioned on whether to proceed.
+* If the user clicks on cancel then they abort the action and return to the game. 
+
+* Change Difficulty Message<br>
+![Change Difficulty](assets/images/readme/message-diff.jpg)
+
+* Restart Game Message<br>
+![Restart Game](assets/images/readme/message-restart.jpg)
+
+* About to Leave Page Message<br>
+![Leave Page](assets/images/readme/message-leavepage.jpg)
+
+#### Undo/Redo
+
+* If the user clicks the undo or redo buttons but there is nothing to be undone or redone, the user will be greated with the correspondaning message.
+
+![Undo](assets/images/readme/message-undo.jpg)
+![Redo](assets/images/readme/message-redo.jpg)
+
+#### Auto Solve
+
+* If the user wishes to auto-solve the puzzle they will be greeted with a message asking if they are sure. If they proceed then a follow up message of commiseration and encouragement is presented.
+* If the user clicks on cancel then they abort the action and return to the game. 
+
+![Auto Solve First](assets/images/readme/message-solve.jpg)
+![Auto Solve Second](assets/images/readme/message-aftersolve.jpg)
+
+### 404 Error Page
+
+* A 404 error page will be displayed should a broken link be used when navigating the website.
+* A link returning to the home button is immediately obvious allowing for improved UX
+
+![404 Error Page](assets/images/readme/404.jpg)
 
 
 ## Features Left to Implement
@@ -220,3 +273,4 @@ Some example user stories which have affected the design:
   - A free, streamlined code editor. The [extensions](#vscode-extensions)
   available have allowed me to customize my workspace and become more
   efficient.
+
