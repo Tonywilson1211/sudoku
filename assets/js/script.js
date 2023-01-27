@@ -121,30 +121,7 @@ let tiles = document.querySelectorAll('.tile')
 
 
 
-    /*switch(true) {
-        // If game is paused no values can be entered onto the board
-        case isPaused:
-            break
-        // If a tile contains a 'preset' number then user cannot overwrite it or insert a note
-        case span.classList.contains('preset'):
-            break
-        // If notes has been turned on then note function is triggered i.e allows notes to be entered onto board
-        case noting:
-            noteMode(span2)
-            break
-        // If user has no number selected this then prohibits the user from replacing a number on the board with an empty value
-        case chosen === null:
-            break
-        // This prohibits duplicate entries into a tile. 
-        case span.innerHTML === chosen:
-            break
-        // If all conditions are met, number is entered into the board and stored in game memory should undo/redo functions be used by user
-        default:
-            gameMemory(span, tile)   
-    }
-}*/
-
-
+ 
 
 
 

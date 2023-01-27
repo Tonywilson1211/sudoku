@@ -306,4 +306,95 @@ Some example user stories which have affected the design:
   available have allowed me to customize my workspace and become more
   efficient.
 
+## Testing
+
+### Responsiveness
+* All pages were tested to ensure responsiveness on screen sizes from 320px upwards, as defined in WCAG 2.1 Reflow criteria for responsive design on Chrome, Edge, Firefox and Opera browsers.
+* Devices tested using the Google Developer Tools emulator
+
+
+
+
+    * Apple iPhone 4 (320px x 480px)
+    * Nokia Lumia 520 (320px x 533px) 
+    * Apple iPhone 5/S (320px 568px)
+    * Samsung Galaxy S9+(320px x 658px) 
+    * Google Pixel 4 (353px x 745px)
+    * BlackBerry Z30 (360px x 640px)  
+    * Samsung Galaxy S3 (360px x 640px)
+    * Microsoft Lumia 950 (360px x 640px) 
+    * Samsung Galaxy S8 (360px x 740px) 
+    * Apple iPhone 6/7/8 (375px x 667px)
+    * Apple iPhone X (375px x 812px)
+    * LG Optimus L70 (384px x 640px)
+    * Nexus 4 (384px x 640px) 
+    * Apple iPhone 12 Pro (390px x 844px)
+    * Pixel 3 (393px x 786px)
+    * Google Pixel 5 (393px x 851px)
+    * Google Pixel 2 (411px x 731px)
+    * Nexus 5X (412px x 732px)
+    * Samsung Galaxy S20 Ultra (412px x 915px)
+    * Apple iPhone 6/7/8 Plus (414px x 736px)
+    * Apple iPhone XR (414px x 896px)
+    * Apple iPad Mini (468px x 4024)
+    * Nokia N9 (480px x 854px)
+    * Surface Duo (540px x 720px)
+    * Nexus 7 (600px x 960px)
+    * BlackBerry PlayBook (600px x 1024px) 
+    * Microsoft Lumia 550 (640px x 360px) 
+    * Samsung Galaxy Tab S4 (712px x 1138px)
+    * Apple iPad Mini (768px x 1024px)
+    * Kindle Fire HDX (800px x 1280px)
+    * Apple iPad Air (820px x 1180px)
+    * Surface Pro 7 (912px x 1368px)
+    * Nest Hub (1024px x 600px)
+    * Apple iPad Pro (1024px x 1366px)
+    * Nest Hub Max (1280px x 800px)
+
+    ![Mobile](assets/images/readme/mobile.jpg)
+
+* The website is responsiveness down to a width of 300px. This means two devices were identified during testing as not being compatible (1) Galaxy Fold (280px x 653px)  (2) JioPhone 2 (240px x 320px). 
+* This will be resolved in future updates.
+
+### Validators
+
+* The W3C Markup Validator, W3C CSS Validator Services and JSHint were used to validate code within the project.
+
+* [W3C Markup Validator](https://validator.w3.org/#validate_by_input) 
+* No errors were found with HTML code in final testing.
+    * Index Page Results<br>
+    * ![Index Page Results](assets/images/readme/w3c-index.jpg)
+    * Game Page Results<br>
+    * ![Game Page Results](assets/images/readme/w3c-game.jpg)
+    * Error 404 Page Results<br>
+    * ![Error 404 Page Results](assets/images/readme/w3c-404.jpg)
+
+* [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) 
+* No errors were found with CSS code in final testing.
+    * ![W3C CSS Validator Results](assets/images/readme/css-validator.jpg)
+
+* [JSHint](https://jshint.com/)
+* No errors were found with JS code in final testing.
+* The cyclometric complexity peaks at 6 which is higher than desired. This is down to only one function within the code called Function tileClick. Due to the nature of the puzzle and the amount of logic that is applied to each tile within the game board, the complexity is not easily avoided. As a result I have opted for making the code easy to read and maintainable rather than focusing on reducing the cyclometric complexity rating.
+ 
+    * ![JSHint Results](assets/images/readme/jshint.jpg)
+
+### Lighthouse
+Google Lighthouse was used to test Performance, Best Practices, Accessibility and SEO.
+* Website results
+    * ![Home Page](./assets/images/readme-images/lighthouse-index.jpg)
+    * ![Services Page](./assets/images/readme-images/lighthouse-services.jpg)
+    * ![Gallery Page](./assets/images/readme-images/lighthouse-gallery.jpg)
+    * ![Contact Us Page](./assets/images/readme-images/lighthouse-contact.jpg)
+
+
+### Functional Testing 
+* All links have been hovered and clicked to ensure accessibility, and all are working correctly.
+* All images have alt attributes
+* All links have ariel-labels
+* Pages all load correctly on all device screen sizes.
+* All social media links work correctly and open on a new tab.
+* All images load on each page as intended.
+* All navigation links are working correctly and bring the users to the function intended.
+* The form on the contact us page was tested to ensure it functioned as expected. Data is required within all sections of the form or submition isn't possible. Thank you page was displayed as expected once the form had been filled out correctly and submitted.
 ![testing](assets/images/readme/testing.jpg)
