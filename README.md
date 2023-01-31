@@ -312,9 +312,6 @@ Some example user stories which have affected the design:
 * All pages were tested to ensure responsiveness on screen sizes from 320px upwards, as defined in WCAG 2.1 Reflow criteria for responsive design on Chrome, Edge, Firefox and Opera browsers.
 * Devices tested using the Google Developer Tools emulator
 
-
-
-
     * Apple iPhone 4 (320px x 480px)
     * Nokia Lumia 520 (320px x 533px) 
     * Apple iPhone 5/S (320px 568px)
@@ -352,6 +349,7 @@ Some example user stories which have affected the design:
     * Nest Hub Max (1280px x 800px)
 
     ![Mobile](assets/images/readme/mobile.jpg)
+    ![Tablet](assets/images/readme/tablet.jpg)
 
 * The website is responsiveness down to a width of 300px. This means two devices were identified during testing as not being compatible (1) Galaxy Fold (280px x 653px)  (2) JioPhone 2 (240px x 320px). 
 * This will be resolved in future updates.
@@ -468,5 +466,62 @@ Solution: Move the if statement and ensure the first action of the click event l
 Commit: [f083b19](https://github.com/Tonywilson1211/P2_Sudoku/commit/4e562c73ec024cecf6634771206a72c9087d6499)
 
 
+## Deployment of This Project
 
+The website development was created in the "main" branch. This branch was deployed using GitHub Pages.
+
+* This site was deployed by completing the following steps:
+
+1. Open [GitHub](https://github.com/).
+2. Click on the project to be deployed.
+3. Navigate to the "Settings".
+4. Navigate to the "Pages" in the column on the left.
+5. Select the "main" branch and select "Save".
+6. The link to the live website will be ready after a few moments and will appear at the top of the page.
+
+## Forking This Project
+
+* Fork this project following the steps:
+
+1. Open [GitHub](https://github.com/).
+2. Click on the project to be forked.
+3. Find the 'Fork' button to the top right of the page.
+4. Once you click the button the fork will be in your repository.
+
+## Cloning This Project
+
+* Clone this project following the steps:
+
+1. Open [GitHub](https://github.com/).
+2. Click on the project to be cloned.
+3. You will be provided with three options to choose from, HTTPS, SSH or GitHub CLI, click the clipboard icon in order to copy the URL.
+4. Once you click the button the fork will be in your repository.
+5. Open a new terminal.
+6. Change the current working directory to the location that you want the cloned directory.
+7. Type 'git clone' and paste the URL copied in step 3.
+8. Press 'Enter' and the project is cloned.
+
+## Credits
+
+### Information Sources/Resources
+
+* Geranl inspiration for features and how to begin creating JS logic for a Sudoku game came from a small selection of youtube videos. 
+[Link 1](https://www.youtube.com/watch?v=S4uRtTb8U-U&t=672s)
+[Link 2](https://www.youtube.com/watch?v=OT2i_X0Oqt0&t=176s)
+
+* The preset board arrangement came from a youtube video. 
+[Link](https://www.youtube.com/watch?v=sr9XJJVbpw0&t=211s)
+
+* ChatGPT was used throughout the project as a reference tool. Any used code from ChatGPT has been adapted/rewritten to match my code for originality and maintain a level of consistency. 
+[Link](https://openai.com/blog/chatgpt/)
+
+* Music was sourced from royalty free download link on soundcloud (via youtube)
+[Link](https://www.youtube.com/watch?v=tZq54IDY17Q)
+
+* Background image was taken from pexel.com.
+[Link](https://www.pexels.com/photo/vertical-design-on-surface-of-material-4039781/)
+  
+## Special Thanks
+
+ * Special thanks to my mentor Gareth McGirr for raising awareness for cyclometric complexity and looking at writing maintable code.
 
